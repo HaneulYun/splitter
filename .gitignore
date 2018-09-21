@@ -42,3 +42,6 @@
 /*.user
 /*.vcxproj
 /*.filters
+*.vcxproj
+*.filters
+*.user
