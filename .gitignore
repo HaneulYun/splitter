@@ -32,3 +32,10 @@
 *.app
 /Release
 /Debug
+/x64
+/*.user
+/*.vcxproj
+/*.filters
+/*.filters
+/*.user
+/*.vcxproj
