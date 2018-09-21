@@ -1,0 +1,78 @@
+﻿  WndSystem.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  winMain.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  VFXBase.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Vertex.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Vector.cpp
+  Timer.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  TimeManager.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Text.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  TearFX.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  TearElement.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  IntroScene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Stage01Scene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  SoundManager.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  ShellFX.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  SceneNULL.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Player.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  OptionScene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  NILScene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  MenuScene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Matrix.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  InputManager.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  ImageObject.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  DestroyFX.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  Gdi.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  GameSceneBase.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  GameoverScene.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemySwirlingPentagon.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyRotatingTwoTriangleUp.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyRotatingTwoTriangleDown.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyRotatingTriangleShield.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyRotatingTriangleHavingShield.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyRotatingRectangle.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyManager.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyHalfSegment.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyCorpsMiniRectangle.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyCorpsBossRectangle.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyComingRectangle.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyComingFastSpear.cpp
+c:\users\yhnil\desktop\splitter\splitter 1.0\splitter\stdafx.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'fmod.hpp': No such file or directory
+  EnemyBase.cpp
