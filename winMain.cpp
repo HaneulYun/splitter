@@ -9,7 +9,6 @@ CGdi* CGdi::instance = nullptr;
 int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPreInst, LPSTR lpCmdLine, int nShowCmd)
 {
 	// splitter for kpu-G-star
-	// start git 01
 	CWndSystem* pSystem = CWndSystem::Instance();
 
 	pSystem->Initialize();
