@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Gdi.h"
+#include "BaseWindow.h"
 
 CGdi::CGdi()
 {

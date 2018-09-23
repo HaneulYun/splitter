@@ -1,4 +1,5 @@
-#pragma once 
+#pragma once
+#include "BulletBase.h"
 
 class CBulletStraight : public CBulletBase
 {

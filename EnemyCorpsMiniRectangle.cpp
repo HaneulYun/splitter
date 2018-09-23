@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "EnemyCorpsMiniRectangle.h"
+#include "EnemyRotatingTriangleShield.h"
+#include "GameSceneBase.h"
 
 CEnemyCorpsMiniRectangle::CEnemyCorpsMiniRectangle()
 {

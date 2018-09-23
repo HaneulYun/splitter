@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "TearElement.h"
 
 CTearElement::CTearElement(Vector pt, int polyAngle, float distance, COLORREF color)
 {

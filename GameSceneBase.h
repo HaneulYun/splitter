@@ -1,4 +1,14 @@
 #pragma once
+#include "BaseScene.h"
+#include "Player.h"
+#include "BulletManager.h"
+#include "EnemyManager.h"
+#include "EffectManager.h"
+
+#include "Text.h"
+#include "ImageObject.h"
+
+#include "WndSystem.h"
 
 #define g_pGameScene dynamic_cast<CGameSceneBase*>(dynamic_cast<CBaseScene*>(g_pSystem->m_pCurProcess))
 

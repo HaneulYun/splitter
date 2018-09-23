@@ -1,4 +1,5 @@
 #pragma once
+#include "BulletBase.h"
 
 class CBulletManager
 {

@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseObject.h"
+#include "Timer.h"
 
 class CVFXBase : public CBaseObject
 {

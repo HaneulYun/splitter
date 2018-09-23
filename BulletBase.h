@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseObject.h"
+
 class CBulletBase : public CBaseObject
 {
 public:

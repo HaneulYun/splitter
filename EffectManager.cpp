@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "EffectManager.h"
 
 CEffectManager::CEffectManager()
 {

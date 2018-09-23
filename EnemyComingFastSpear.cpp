@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyComingFastSpear.h"
+#include "GameSceneBase.h"
 
 CEnemyComingFastSpear::CEnemyComingFastSpear()
 {

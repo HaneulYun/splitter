@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Timer.h"
 
 CTimer::CTimer(void)
 {

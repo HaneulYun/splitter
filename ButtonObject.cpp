@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "ButtonObject.h"
 
 CButtonObject::CButtonObject()
 {

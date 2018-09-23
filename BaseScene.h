@@ -1,4 +1,6 @@
 #pragma once
+#include "IProcess.h"
+
 class CBaseScene : public IProcess
 {
 public:
@@ -16,12 +18,6 @@ public:
 	void Render();
 	virtual void ApiRender(Matrix mat) = 0;
 
-	Matrix GetMatrix() const override
-	{
-		return m_matWorld;
-	}
-	RECT GetRect() const override
-	{
-		return m_worldRect;
-	}
+	Matrix GetMatrix() const override;
+	RECT GetRect() const override;
 };

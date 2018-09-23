@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Matrix.h"
+
 class Vertex
 {
 public:

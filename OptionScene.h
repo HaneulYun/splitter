@@ -1,4 +1,7 @@
 #pragma once
+#include "BaseScene.h"
+#include "Text.h"
+#include "ButtonObject.h"
 
 class OptionScene : public CBaseScene
 {

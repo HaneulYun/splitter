@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "ShellFX.h"
+#include "WndSystem.h"
 
 CShellFX::CShellFX(Vector pt, COLORREF color, float speed, float direction)
 {

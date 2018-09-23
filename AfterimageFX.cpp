@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "AfterimageFX.h"
 
 CAfterimageFX::CAfterimageFX(CBaseObject& obj, COLORREF color)
 {

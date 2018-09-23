@@ -1,4 +1,7 @@
 #pragma once
+#include "BaseObject.h"
+#include "Timer.h"
+#include "BulletStraight.h"
 
 class CPlayer : public CBaseObject
 {

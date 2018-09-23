@@ -1,4 +1,6 @@
 #pragma once
+#include "stdafx.h"
+
 class Matrix
 {
 public:

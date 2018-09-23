@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EndlessModeScene.h"
+#include "EnemyComingRectangle.h"
 
 EndlessModeScene::EndlessModeScene()
 {

@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseScene.h"
+#include "Text.h"
 
 class IntroScene : public CBaseScene
 {

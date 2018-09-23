@@ -1,4 +1,7 @@
 #pragma once
+#include "BaseScene.h"
+#include "Text.h"
+#include "ImageObject.h"
 
 class MenuScene : public CBaseScene
 {

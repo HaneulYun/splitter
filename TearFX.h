@@ -1,4 +1,5 @@
 #pragma once
+#include "VFXBase.h"
 
 class CTearFX : public CVFXBase
 {

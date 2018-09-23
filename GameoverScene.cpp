@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "GameoverScene.h"
+#include "WndSystem.h"
 
 GameoverScene::GameoverScene()
 {

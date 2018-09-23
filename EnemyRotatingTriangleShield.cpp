@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyRotatingTriangleShield.h"
+#include "GameSceneBase.h"
 
 CEnemyRotatingTriangleShield::CEnemyRotatingTriangleShield()
 {

@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseRender.h"
+
 class CBaseObject : public CBaseRender
 {
 public:

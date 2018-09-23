@@ -1,4 +1,9 @@
 #pragma once
+#include "BaseObject.h"
+#include "SoundManager.h"
+#include "TearFX.h"
+#include "DestroyFX.h"
+#include "Timer.h"
 
 class CEnemyBase : public CBaseObject
 {

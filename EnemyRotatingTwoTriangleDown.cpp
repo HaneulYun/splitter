@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyRotatingTwoTriangleDown.h"
+#include "GameSceneBase.h"
 
 CEnemyRotatingTwoTriangleDown::CEnemyRotatingTwoTriangleDown()
 {

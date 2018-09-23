@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyComingRectangle.h"
+#include "GameSceneBase.h"
 
 CEnemyComingRectangle::CEnemyComingRectangle()
 {

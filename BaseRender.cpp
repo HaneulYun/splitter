@@ -1,5 +1,6 @@
 #include "stdafx.h"
-
+#include "BaseRender.h"
+#include "Gdi.h"
 
 CBaseRender::CBaseRender()
 {

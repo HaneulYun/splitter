@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "BulletStraight.h"
+#include "WndSystem.h"
+#include "GameSceneBase.h"
 
 CBulletStraight::CBulletStraight(float direction)
 {

@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyManager.h"
+#include "GameSceneBase.h"
 
 CEnemyManager::CEnemyManager()
 {

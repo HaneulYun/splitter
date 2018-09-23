@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyRotatingRectangle.h"
+#include "GameSceneBase.h"
 
 CEnemyRotatingRectangle::CEnemyRotatingRectangle()
 {

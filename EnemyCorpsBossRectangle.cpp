@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyCorpsBossRectangle.h"
+#include "GameSceneBase.h"
 
 CEnemyCorpsBossRectangle::CEnemyCorpsBossRectangle()
 {

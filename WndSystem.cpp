@@ -1,4 +1,13 @@
 #include "stdafx.h"
+#include "WndSystem.h"
+
+#include "IntroScene.h"
+#include "MenuScene.h"
+#include "EndlessModeScene.h"
+#include "Stage01Scene.h"
+#include "OptionScene.h"
+#include "GameoverScene.h"
+#include "NILScene.h"
 
 CWndSystem::CWndSystem()
 {

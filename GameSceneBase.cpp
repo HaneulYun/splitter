@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "GameSceneBase.h"
 
 CGameSceneBase::CGameSceneBase()
 {

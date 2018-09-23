@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "WndSystem.h"
 
 CWndSystem* CWndSystem::instance = nullptr;
 CBaseWindow* CBaseWindow::instance = nullptr;

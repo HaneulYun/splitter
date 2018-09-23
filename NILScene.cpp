@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "NILScene.h"
+#include "WndSystem.h"
 
 NILScene::NILScene()
 {

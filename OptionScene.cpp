@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "OptionScene.h"
+#include "WndSystem.h"
+#include "SoundManager.h"
 
 OptionScene::OptionScene()
 {

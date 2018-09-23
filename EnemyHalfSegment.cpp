@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "EnemyHalfSegment.h"
+#include "GameSceneBase.h"
 
 CEnemyHalfSegment::CEnemyHalfSegment()
 {

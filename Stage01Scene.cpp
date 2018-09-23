@@ -1,4 +1,10 @@
 #include "stdafx.h"
+#include "Stage01Scene.h"
+#include "SoundManager.h"
+#include "EnemyComingRectangle.h"
+#include "EnemyRotatingRectangle.h"
+#include "EnemyRotatingTwoTriangleUp.h"
+#include "EnemyRotatingTriangleHavingShield.h"
 
 Stage01Scene::Stage01Scene()
 {

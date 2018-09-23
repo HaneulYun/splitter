@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "Player.h"
+#include "GameSceneBase.h"
+#include "ShellFX.h"
 
 CPlayer::CPlayer()
 {

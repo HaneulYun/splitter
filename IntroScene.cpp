@@ -1,4 +1,6 @@
 ﻿#include "stdafx.h"
+#include "IntroScene.h"
+#include "WndSystem.h"
 
 IntroScene::IntroScene()
 {

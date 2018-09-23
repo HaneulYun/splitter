@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "DestroyFX.h"
 
 CDestroyFX::CDestroyFX(Vector pt, int polyAngle, float distance, COLORREF color)
 {

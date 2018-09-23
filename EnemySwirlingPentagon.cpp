@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "EnemySwirlingPentagon.h"
+#include "WndSystem.h"
+#include "GameSceneBase.h"
 
 CEnemySwirlingPentagon::CEnemySwirlingPentagon()
 {

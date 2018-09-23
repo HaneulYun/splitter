@@ -1,4 +1,5 @@
 #pragma once
+#include "BaseObject.h"
 
 class CButtonObject : public CBaseObject
 {

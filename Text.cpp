@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Text.h"
+#include "Gdi.h"
 
 CText::CText()
 {

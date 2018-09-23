@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "BulletBase.h"
 
 CBulletBase::CBulletBase()
 {

@@ -1,4 +1,5 @@
 #pragma once
+#include "BaseScene.h"
 
 class SceneNULL : public CBaseScene
 {

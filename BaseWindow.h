@@ -1,5 +1,7 @@
 #pragma once
 
+#include "InputManager.h"
+
 #define g_pWindow	CBaseWindow::Instance()
 
 class CBaseWindow : public CInputManager

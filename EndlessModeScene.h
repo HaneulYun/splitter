@@ -1,4 +1,5 @@
 #pragma once
+#include "GameSceneBase.h"
 
 class EndlessModeScene : public CGameSceneBase
 {

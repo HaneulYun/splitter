@@ -1,5 +1,11 @@
 #pragma once
 
+#include "BaseWindow.h"
+#include "TimeManager.h"
+#include "IProcess.h"
+#include "SoundManager.h"
+#include "Gdi.h"
+
 #define g_pSystem	CWndSystem::Instance()
 
 class CWndSystem : public CBaseWindow,

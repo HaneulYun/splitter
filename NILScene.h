@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseScene.h"
+#include "ImageObject.h"
 
 class NILScene : public CBaseScene
 {

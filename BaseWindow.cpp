@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "WndSystem.h"
 
 CBaseWindow::CBaseWindow() : m_bIsActive(false)
 {

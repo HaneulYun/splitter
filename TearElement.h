@@ -1,4 +1,5 @@
 #pragma once
+#include "VFXBase.h"
 
 class CTearElement : public CVFXBase
 {
