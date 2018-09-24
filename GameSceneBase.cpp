@@ -25,12 +25,12 @@ bool CGameSceneBase::Initialize()
 {
 	Matrix mat;
 	m_matWorld.Identity();
-	m_matWorld.m11 = g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
-	m_matWorld.m12 = g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  sin(0.0);
-	m_matWorld.m21 = g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 * -sin(0.0);
-	m_matWorld.m22 = g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
-	m_matWorld.m31 = g_pWindow->m_clientSize.cx / 2;
-	m_matWorld.m32 = g_pWindow->m_clientSize.cy / 2;
+	m_matWorld.m11 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
+	m_matWorld.m12 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  sin(0.0);
+	m_matWorld.m21 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 * -sin(0.0);
+	m_matWorld.m22 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
+	m_matWorld.m31 = (float)g_pWindow->m_clientSize.cx / 2;
+	m_matWorld.m32 = (float)g_pWindow->m_clientSize.cy / 2;
 	m_matOrigin = m_matWorld;
 
 	m_worldRect =
