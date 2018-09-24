@@ -8,7 +8,7 @@
 
 #define g_pSystem	CWndSystem::Instance()
 
-class CWndSystem : public CBaseWindow,
+class CWndSystem : protected CBaseWindow,
 				   public CTimeManager
 {
 public:

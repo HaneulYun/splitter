@@ -6,11 +6,14 @@
 
 class CBaseWindow : public CInputManager
 {
+
 protected:
 	BOOL	m_bIsActive;
 	LPCTSTR szTitle;
 	HINSTANCE hInstance;
 	static CBaseWindow* instance;
+
+	CBaseWindow();
 
 public:
 	HWND	m_hWnd, m_hNormalWnd, m_hFullScreenWnd;
@@ -23,7 +26,6 @@ public:
 
 	BOOL	m_isFullScreen;
 
-	CBaseWindow();
 	virtual ~CBaseWindow();
 
 	bool Initialize();

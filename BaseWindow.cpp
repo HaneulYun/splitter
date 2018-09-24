@@ -64,8 +64,8 @@ bool CBaseWindow::Initialize()
 
 	m_winFullRect.left = 0;
 	m_winFullRect.top = 0;
-	m_winFullRect.right = GetSystemMetrics(SM_CXSCREEN);
-	m_winFullRect.bottom = GetSystemMetrics(SM_CYSCREEN);
+	m_winFullRect.right = 1920;
+	m_winFullRect.bottom = 1080;
 
 	m_winRect = m_winNormalRect;
 
@@ -106,6 +106,7 @@ int CBaseWindow::OnSize(HWND hWnd, WPARAM wParam, LPARAM lParam)
 	GetWindowRect(hWnd, &m_winRect);
 	m_winSize.cx = m_winRect.right - m_winRect.left;
 	m_winSize.cy = m_winRect.bottom - m_winRect.top;
+
 	GetClientRect(hWnd, &m_clientRect);
 	m_clientSize.cx = m_clientRect.right - m_clientRect.left;
 	m_clientSize.cy = m_clientRect.bottom - m_clientRect.top;
@@ -173,11 +174,18 @@ int CBaseWindow::OnFullScreen()
 {
 	m_winRect = m_winFullRect;
 
-	AdjustWindowRectEx(&m_winRect, WS_POPUP, false, WS_EX_APPWINDOW);
+	//AdjustWindowRectEx(&m_winRect, WS_POPUP, false, WS_EX_APPWINDOW);
 	SetWindowLongPtr(m_hWnd, GWL_EXSTYLE, WS_EX_APPWINDOW | WS_EX_TOPMOST);
-	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_POPUP);
 
-	SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_FRAMECHANGED);
+	SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, m_winFullRect.right, m_winFullRect.bottom, SWP_FRAMECHANGED);
+
+	m_winSize.cx = m_winRect.right - m_winRect.left;
+	m_winSize.cy = m_winRect.bottom - m_winRect.top;
+
+	GetClientRect(m_hWnd, &m_clientRect);
+	m_clientSize.cx = m_clientRect.right - m_clientRect.left;
+	m_clientSize.cy = m_clientRect.bottom - m_clientRect.top;
 
 	ShowWindow(m_hWnd, SW_SHOW);
 	UpdateWindow(m_hWnd);
@@ -188,10 +196,17 @@ int CBaseWindow::OffFullScreen()
 	m_winRect = m_winNormalRect;
 
 	AdjustWindowRectEx(&m_winRect, WS_BORDER | WS_CAPTION | WS_SYSMENU, false, NULL);
-	SetWindowLongPtr(m_hWnd, GWL_EXSTYLE, NULL | WS_EX_TOPMOST);
-	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE);
+	//SetWindowLongPtr(m_hWnd, GWL_EXSTYLE, NULL | WS_EX_TOPMOST);
+	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_BORDER | WS_CAPTION | WS_SYSMENU);
 
 	SetWindowPos(m_hWnd, HWND_TOPMOST, 200, 100, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_FRAMECHANGED);
+
+	m_winSize.cx = m_winRect.right - m_winRect.left;
+	m_winSize.cy = m_winRect.bottom - m_winRect.top;
+
+	GetClientRect(m_hWnd, &m_clientRect);
+	m_clientSize.cx = m_clientRect.right - m_clientRect.left;
+	m_clientSize.cy = m_clientRect.bottom - m_clientRect.top;
 
 	ShowWindow(m_hWnd, SW_SHOW);
 	UpdateWindow(m_hWnd);
