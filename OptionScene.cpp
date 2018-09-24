@@ -98,18 +98,26 @@ bool OptionScene::Pulse()
 	mouseX = g_pInputManager->m_MouseState.x;
 	mouseY = g_pInputManager->m_MouseState.y;
 
+	RECT m_mouseRect{ g_pInputManager->m_mousePoint.x, g_pInputManager->m_mousePoint.y,
+					g_pInputManager->m_mousePoint.x,  g_pInputManager->m_mousePoint.y };
 
 	if (830 < mouseX && mouseX < 880 && 300 < mouseY && mouseY < 350) {
 		m_ON->FontInitialize(30, "Delta Universe-Regular", 50, 0, 1);
 		if (!g_pWindow->m_isFullScreen)
 			if (g_pInputManager->m_MouseState.btn[0])
+			{
 				g_pWindow->m_isFullScreen = true;
+				g_pWindow->OnFullScreen();
+				return true;
+			}
 	}
 	else if (950 < mouseX && mouseX < 1020 && 300 < mouseY && mouseY < 350) {
 		m_OFF->FontInitialize(30, "Delta Universe-Regular", 50, 0, 1);
 		if (g_pWindow->m_isFullScreen)
-			if (g_pInputManager->m_MouseState.btn[0]) {
+			if (g_pInputManager->m_MouseState.btn[0])
+			{
 				g_pWindow->m_isFullScreen = false;
+				g_pWindow->OffFullScreen();
 				return true;
 			}
 	}

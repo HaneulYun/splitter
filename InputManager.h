@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 
 #define g_pInputManager	CInputManager::Instance()
 
@@ -16,6 +17,7 @@ public:
 	char m_OldKeyState[256];
 	char m_CurKeyState[256];
 	MOUSESTATE m_MouseState;
+	POINT m_mousePoint;
 	static CInputManager* instance;
 public:
 	CInputManager();

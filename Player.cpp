@@ -47,13 +47,7 @@ bool CPlayer::Pulse()
 	{
 		POINT mousePt;
 		
-		mousePt.x = g_pInputManager->m_MouseState.x - g_pWindow->m_clientSize.cx / 2;
-		mousePt.y = g_pInputManager->m_MouseState.y - g_pWindow->m_clientSize.cy / 2;
-
-		mousePt = g_pSystem->m_pCurProcess->GetMatrix().Translate(mousePt);
-
-		mousePt.x -= g_pWindow->m_clientSize.cx / 2;
-		mousePt.y -= g_pWindow->m_clientSize.cy / 2;
+		mousePt = g_pInputManager->m_mousePoint;
 
 		m_rotate = atan2(mousePt.y - m_Point.y, mousePt.x - m_Point.x) / PI;
 

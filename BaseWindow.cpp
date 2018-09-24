@@ -1,3 +1,5 @@
+#include <tchar.h>
+#include <atlconv.h>
 #include "stdafx.h"
 #include "WndSystem.h"
 
@@ -6,6 +8,7 @@ CBaseWindow::CBaseWindow() : m_bIsActive(false)
 	if (instance == nullptr)
 		instance = this;
 	//CInputManager::Instance();
+	m_isFullScreen = false;
 }
 
 CBaseWindow::~CBaseWindow()
@@ -14,9 +17,9 @@ CBaseWindow::~CBaseWindow()
 
 bool CBaseWindow::Initialize()
 {
-	HINSTANCE hInstance = GetModuleHandle(NULL);
+	hInstance = GetModuleHandle(NULL);
 
-	LPCTSTR szTitle = "NIL_GameEngine";
+	szTitle = "NIL_GameEngine";
 	//	LoadString( hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING );
 
 	//윈도우 클래스 정의/초기화
@@ -36,27 +39,41 @@ bool CBaseWindow::Initialize()
 
 	RegisterClassEx(&wcex);
 
-	m_hWnd = CreateWindow(szTitle,
-		szTitle,
-		WS_BORDER | WS_CAPTION | WS_SYSMENU,
-		0, 0, 0, 0,
-		NULL,
-		NULL,
-		hInstance,
-		NULL);
+	//m_hNormalWnd = CreateWindow(szTitle,
+	//	szTitle,
+	//	WS_BORDER | WS_CAPTION | WS_SYSMENU,
+	//	0, 0, 0, 0,
+	//	NULL,
+	//	NULL,
+	//	hInstance,
+	//	NULL);
 
+	USES_CONVERSION;
+	m_hFullScreenWnd = CreateWindowExW(NULL, A2CW(szTitle), A2CW(szTitle), WS_BORDER | WS_CAPTION | WS_SYSMENU,
+		0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), nullptr, nullptr, hInstance, nullptr);
+	
+	m_hWnd = m_hFullScreenWnd;
+
+	//m_hWnd = m_hNormalWnd;
 	// RECT rtRect; //사각형 구조체
 
-	m_winRect.left = 0;
-	m_winRect.top = 0;
-	m_winRect.right = 1280;
-	m_winRect.bottom = 720;
+	m_winNormalRect.left = 0;
+	m_winNormalRect.top = 0;
+	m_winNormalRect.right = 1280;
+	m_winNormalRect.bottom = 720;
+
+	m_winFullRect.left = 0;
+	m_winFullRect.top = 0;
+	m_winFullRect.right = GetSystemMetrics(SM_CXSCREEN);
+	m_winFullRect.bottom = GetSystemMetrics(SM_CYSCREEN);
+
+	m_winRect = m_winNormalRect;
 
 	//윈도우 형식을 재정의 함수
-	AdjustWindowRect(&m_winRect, WS_BORDER | WS_CAPTION | WS_SYSMENU, false);
+	AdjustWindowRectEx(&m_winRect, WS_BORDER | WS_CAPTION | WS_SYSMENU, false, NULL);
 
 	//윈도우 위치
-	SetWindowPos(m_hWnd, NULL, 200, 100, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_SHOWWINDOW);
+	SetWindowPos(m_hWnd, NULL, 200, 100, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_FRAMECHANGED);
 
 	if (!m_hWnd)
 	{
@@ -149,6 +166,35 @@ int CBaseWindow::OnMouseMove(HWND hWnd, WPARAM wParam, LPARAM lParam)
 int CBaseWindow::OnDestroy(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 	g_pSystem->ChangeProcess(IProcess::eProcessType_Quit);
+	return 0;
+}
+
+int CBaseWindow::OnFullScreen()
+{
+	m_winRect = m_winFullRect;
+
+	AdjustWindowRectEx(&m_winRect, WS_POPUP, false, WS_EX_APPWINDOW);
+	SetWindowLongPtr(m_hWnd, GWL_EXSTYLE, WS_EX_APPWINDOW | WS_EX_TOPMOST);
+	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+
+	SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_FRAMECHANGED);
+
+	ShowWindow(m_hWnd, SW_SHOW);
+	UpdateWindow(m_hWnd);
+	return 0;
+}
+int CBaseWindow::OffFullScreen()
+{
+	m_winRect = m_winNormalRect;
+
+	AdjustWindowRectEx(&m_winRect, WS_BORDER | WS_CAPTION | WS_SYSMENU, false, NULL);
+	SetWindowLongPtr(m_hWnd, GWL_EXSTYLE, NULL | WS_EX_TOPMOST);
+	SetWindowLongPtr(m_hWnd, GWL_STYLE, WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE);
+
+	SetWindowPos(m_hWnd, HWND_TOPMOST, 200, 100, m_winRect.right - m_winRect.left, m_winRect.bottom - m_winRect.top, SWP_FRAMECHANGED);
+
+	ShowWindow(m_hWnd, SW_SHOW);
+	UpdateWindow(m_hWnd);
 	return 0;
 }
 
