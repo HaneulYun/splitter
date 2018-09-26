@@ -16,22 +16,21 @@ OptionScene::~OptionScene()
 
 bool OptionScene::Initialize()
 {
-	Matrix mat;
 	m_matWorld.Identity();
-	m_matWorld.m11 = 0.35 *  cos(0.0);
-	m_matWorld.m12 = 0.35 *  sin(0.0);
-	m_matWorld.m21 = 0.35 * -sin(0.0);
-	m_matWorld.m22 = 0.35 *  cos(0.0);
-	m_matWorld.m31 = g_pWindow->m_clientSize.cx / 2;
-	m_matWorld.m32 = g_pWindow->m_clientSize.cy / 2;
+	m_matWorld.m11 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
+	m_matWorld.m12 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  sin(0.0);
+	m_matWorld.m21 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 * -sin(0.0);
+	m_matWorld.m22 = (float)g_pWindow->m_clientSize.cx / g_pWindow->m_winNormalRect.right * 0.32 *  cos(0.0);
+	m_matWorld.m31 = (float)g_pWindow->m_clientSize.cx / 2;
+	m_matWorld.m32 = (float)g_pWindow->m_clientSize.cy / 2;
 	m_matOrigin = m_matWorld;
 
 	m_worldRect =
 	{
-		-(LONG)(g_pWindow->m_clientSize.cx / 2 / 0.35),
-		-(LONG)(g_pWindow->m_clientSize.cy / 2 / 0.35),
-		+(LONG)(g_pWindow->m_clientSize.cx / 2 / 0.35),
-		+(LONG)(g_pWindow->m_clientSize.cy / 2 / 0.35)
+		-(LONG)(m_matWorld.m31 / m_matWorld.m11),
+		-(LONG)(m_matWorld.m32 / m_matWorld.m22),
+		+(LONG)(m_matWorld.m31 / m_matWorld.m11),
+		+(LONG)(m_matWorld.m32 / m_matWorld.m22)
 	};
 
 	m_SouudFX = new CText;
