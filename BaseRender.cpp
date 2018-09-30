@@ -87,8 +87,9 @@ void CBaseRender::Render(Matrix matWorld)
 
 			if (m_pImage == nullptr)
 				break;
+			m_pImage->Draw(g_pGdi->m_hdc, polygon[0].x, polygon[0].y, polygon[1].x - polygon[0].x, polygon[1].y - polygon[0].y);
 			//m_pImage->BitBlt(g_pGdi->m_hdc, polygon[0].x, polygon[0].y, polygon[1].x - polygon[0].x, polygon[1].y - polygon[0].y, 0, 0);
-			BitBlt(g_pGdi->m_hdc, polygon[0].x, polygon[0].y, m_pImage->GetWidth(), m_pImage->GetHeight(), m_pImage->GetDC(), 0, 0, SRCCOPY);
+			//BitBlt(g_pGdi->m_hdc, polygon[0].x, polygon[0].y, m_pImage->GetWidth(), m_pImage->GetHeight(), m_pImage->GetDC(), 0, 0, SRCCOPY);
 			break;
 		case CBaseRender::eRenderType_Font:
 			if (m_pStr == nullptr)

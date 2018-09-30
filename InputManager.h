@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "ImageObject.h"
 
 #define g_pInputManager	CInputManager::Instance()
 
@@ -19,12 +20,15 @@ public:
 	MOUSESTATE m_MouseState;
 	POINT m_mousePoint;
 	static CInputManager* instance;
+
+	CImageObject* m_cursorImg;
 public:
 	CInputManager();
 	~CInputManager();
 
 	void Initialize();
 	void Pulse();
+	void Render();
 
 	static CInputManager* Instance()
 	{

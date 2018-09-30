@@ -36,7 +36,6 @@ bool CWndSystem::Initialize()
 
 	ChangeProcess(IProcess::eProcessType_LoadScene);
 
-
 	return 0;
 }
 void CWndSystem::Terminate()

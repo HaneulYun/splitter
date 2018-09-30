@@ -21,6 +21,9 @@ void CInputManager::Initialize()
 	}
 	m_MouseState = { 0, };
 	m_mousePoint = { 0, };
+
+	m_cursorImg = new CImageObject();
+	m_cursorImg->Initialize("resources/image/targetCursor.png", 0, 0, 0.3f);
 }
 
 void CInputManager::Pulse()
@@ -34,4 +37,12 @@ void CInputManager::Pulse()
 
 	m_mousePoint.x -= g_pWindow->m_clientSize.cx / 2;
 	m_mousePoint.y -= g_pWindow->m_clientSize.cy / 2;
+}
+
+void CInputManager::Render()
+{
+	Matrix mat;
+	mat.Identity();
+	m_cursorImg->m_Point = { float(m_MouseState.x), float(m_MouseState.y) };
+	m_cursorImg->Render(mat);
 }

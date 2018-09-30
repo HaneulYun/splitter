@@ -219,6 +219,13 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 	{
 	case WM_CREATE:
 		return g_pWindow->OnCreate(hWnd, wParam, lParam);
+	case WM_SETCURSOR:
+		if (LOWORD(lParam) == HTCLIENT)
+		{
+			SetCursor(NULL);
+			return TRUE;
+		}
+		break;
 	case WM_COMMAND:
 		return g_pWindow->OnCommand(hWnd, wParam, lParam);
 	case WM_SIZE:
