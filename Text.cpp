@@ -30,6 +30,7 @@ bool CText::FontInitialize(int strlen, char* url, int _height, int _width, bool 
 
 	m_rotate = 0.0f;
 	m_scale = 1.0f;
+
 	return true;
 }
 bool CText::ObjectInitialize(int x, int y, COLORREF color, COLORREF bk, int mode)
@@ -39,6 +40,13 @@ bool CText::ObjectInitialize(int x, int y, COLORREF color, COLORREF bk, int mode
 	m_Color = color;
 	m_SolidColor = bk;
 	m_Mode = mode;
+
+	m_NumPolygon = 2;
+	m_Polygon = new POINT[m_NumPolygon];
+	{
+		m_Polygon[0] = { LONG(m_Point.x), LONG(m_Point.y) };
+		m_Polygon[1] = { LONG(m_Point.x + 1), LONG(m_Point.y + 1) };
+	}
 	return true;
 }
 void CText::Terminate()

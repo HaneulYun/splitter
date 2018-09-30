@@ -2,6 +2,9 @@
 #include "IntroScene.h"
 #include "WndSystem.h"
 
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2+m_worldRect.right*(x/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+
 IntroScene::IntroScene()
 {
 }
@@ -33,23 +36,24 @@ bool IntroScene::Initialize()
 
 	m_hello = new CText;
 	m_hello->FontInitialize(100, "고딕", 40, 0);
-	m_hello->ObjectInitialize(100, 100, RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_hello->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(100), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	
 
 	m_Nil = new CText;
 	m_Nil->FontInitialize(100, "고딕", 40, 0);
-	m_Nil->ObjectInitialize(750, 100, RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_Nil->ObjectInitialize(WIDTH_NORMALIZE(750), HEIGHT_NORMALIZE(100), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
 
 	m_jang = new CText;
 	m_jang->FontInitialize(100, "고딕", 40, 0);
-	m_jang->ObjectInitialize(400, 200, RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_jang->ObjectInitialize(WIDTH_NORMALIZE(400), HEIGHT_NORMALIZE(200), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
 
 	m_people = new CText;
 	m_people->FontInitialize(100, "고딕", 40, 0);
-	m_people->ObjectInitialize(300, 300, RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_people->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(300), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
 	
 	m_people1 = new CText;
 	m_people1->FontInitialize(100, "고딕", 40, 0);
-	m_people1->ObjectInitialize(100, 400, RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_people1->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(400), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
 
 	initSound = 0;
 	return true;

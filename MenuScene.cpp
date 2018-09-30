@@ -2,6 +2,9 @@
 #include "MenuScene.h"
 #include "WndSystem.h"
 
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2+m_worldRect.right*(x/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+
 MenuScene::MenuScene()
 {
 	Initialize();
@@ -37,27 +40,27 @@ bool MenuScene::Initialize()
 
 	m_TextSPLITTER = new CText;
 	m_TextSPLITTER->FontInitialize(20, "Delta Universe-Regular", 150, 0);
-	m_TextSPLITTER->ObjectInitialize(500, 100, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_TextSPLITTER->ObjectInitialize(WIDTH_NORMALIZE(500), HEIGHT_NORMALIZE(100), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextFPS = new CText();
 	m_TextFPS->FontInitialize(20, "Delta Universe-Regular", 50, 0);
-	m_TextFPS->ObjectInitialize(10, 10, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_TextFPS->ObjectInitialize(WIDTH_NORMALIZE(10), HEIGHT_NORMALIZE(10), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextEndless = new CText;
 	m_TextEndless->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextEndless->ObjectInitialize(300, 280, RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextEndless->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(280), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextStage1 = new CText;
 	m_TextStage1->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextStage1->ObjectInitialize(330, 380, RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextStage1->ObjectInitialize(WIDTH_NORMALIZE(330), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextExit = new CText;
 	m_TextExit->FontInitialize(20, "Delta Universe-Regular", 90, 30);
-	m_TextExit->ObjectInitialize(780, 380, RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextExit->ObjectInitialize(WIDTH_NORMALIZE(780), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Option = new CText;
 	m_Option->FontInitialize(20, "Delta Universe-Regular", 90, 30);
-	m_Option->ObjectInitialize(750, 280, RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_Option->ObjectInitialize(WIDTH_NORMALIZE(750), HEIGHT_NORMALIZE(280), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Nil.Initialize("resources/image/ÇÏ´Ã1.jpg", -800, -650, 1.5f);
 	m_JJang.Initialize("resources/image/¼öÇö1.jpg", 700, -600, 1.5f);
@@ -89,9 +92,12 @@ bool MenuScene::Pulse()
 
 	mouseX = g_pInputManager->m_MouseState.x;
 	mouseY = g_pInputManager->m_MouseState.y;
+	POINT mousePoint = g_pInputManager->m_mousePoint;
+	RECT mouseRect{ mousePoint.x, mousePoint.y, mousePoint.x, mousePoint.y};
 
 	if (300 < mouseX && mouseX < 540 && 250 < mouseY && mouseY < 375) {
-		m_TextEndless->m_Point.x = 270;
+	//if (m_TextEndless->hitBox(mouseRect)) {
+		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(270);
 		m_TextEndless->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºEndless Mode");
 		m_TextEndless->Pulse(str);
@@ -102,7 +108,7 @@ bool MenuScene::Pulse()
 		}
 	}
 	else if (330 < mouseX && mouseX < 460 && 395 < mouseY && mouseY < 470) {
-		m_TextStage1->m_Point.x = 300;
+		m_TextStage1->m_Point.x = WIDTH_NORMALIZE(300);
 		m_TextStage1->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºStage 1");
 		m_TextStage1->Pulse(str);
@@ -113,7 +119,7 @@ bool MenuScene::Pulse()
 		}
 	}
 	else if (780 < mouseX && mouseX < 840 && 380 < mouseY && mouseY < 515) {
-		m_TextExit->m_Point.x = 730;
+		m_TextExit->m_Point.x = WIDTH_NORMALIZE(730);
 		m_TextExit->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºEXIT");
 		m_TextExit->Pulse(str);
@@ -131,7 +137,7 @@ bool MenuScene::Pulse()
 	}
 	else if (750 < mouseX && mouseX < 870 && 280 < mouseY && mouseY < 370)
 	{
-		m_Option->m_Point.x = 720;
+		m_Option->m_Point.x = WIDTH_NORMALIZE(720);
 		m_Option->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºOPTION");
 		m_Option->Pulse(str);
@@ -143,19 +149,19 @@ bool MenuScene::Pulse()
 	}
 	else
 	{
-		m_TextEndless->m_Point.x = 300;
+		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(330);
 		m_TextEndless->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "Endless Mode");
 		m_TextEndless->Pulse(str);
-		m_TextStage1->m_Point.x = 330;
+		m_TextStage1->m_Point.x = WIDTH_NORMALIZE(330);
 		m_TextStage1->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "Stage 1");
 		m_TextStage1->Pulse(str);
-		m_TextExit->m_Point.x = 780;
+		m_TextExit->m_Point.x = WIDTH_NORMALIZE(780);
 		m_TextExit->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "EXIT");
 		m_TextExit->Pulse(str);
-		m_Option->m_Point.x = 750;
+		m_Option->m_Point.x = WIDTH_NORMALIZE(750);
 		m_Option->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "OPTION");
 		m_Option->Pulse(str);

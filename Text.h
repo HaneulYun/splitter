@@ -18,3 +18,5 @@ public:
 	bool Pulse(char* str);
 };
 
+#define WIDTH_NORMALIZE(w, x) (-w/2+w*(x/1280.f))
+#define HEIGHT_NORMALIZE(h, y) (-h/2+h*(y/720.f))
