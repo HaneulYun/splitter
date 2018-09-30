@@ -64,8 +64,8 @@ bool CBaseWindow::Initialize()
 
 	m_winFullRect.left = 0;
 	m_winFullRect.top = 0;
-	m_winFullRect.right = 1920;
-	m_winFullRect.bottom = 1080;
+	m_winFullRect.right = GetSystemMetrics(SM_CXSCREEN);
+	m_winFullRect.bottom = GetSystemMetrics(SM_CYSCREEN);
 
 	m_winRect = m_winNormalRect;
 
