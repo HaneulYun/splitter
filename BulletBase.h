@@ -9,6 +9,7 @@ public:
 	float m_direction;
 	float m_speed;
 	int m_hp;
+	float m_damage;
 
 	FMOD::Channel* m_pChannel;
 public:

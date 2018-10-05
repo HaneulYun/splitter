@@ -77,6 +77,18 @@ bool CPlayer::Pulse()
 				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
 			}
 			break;
+		case 3:
+			if (GetTickCount() - old > 40)
+			{
+				old = GetTickCount();
+				for (int i = 0; i < m_gunLevel; ++i)
+					g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletSprinkle(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1)));
+				float t = m_rotate + 0.75 + rand() % 50 / 100.0;
+				g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
+				g_pGameScene->SetShake(100, 1.5, m_rotate);
+				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			}
+			break;
 		}
 		switch (m_gunLevel)
 		{
@@ -148,7 +160,7 @@ bool CPlayer::Pulse()
 	else if (g_pKeyCodeScan('2'))
 		m_gunType = 2;
 	else if (g_pKeyCodeScan('3'))
-		m_gunType = 2;
+		m_gunType = 3;
 	else if (g_pKeyCodeScan('4'))
 		m_gunType = 2;
 	else if (g_pKeyCodeScan('5'))

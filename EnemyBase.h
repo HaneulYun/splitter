@@ -9,7 +9,7 @@ class CEnemyBase : public CBaseObject
 {
 public:
 	FMOD::Channel* m_pChannel;
-	int m_Hp;
+	float m_Hp;
 	int m_AddScore;
 
 	int m_type;

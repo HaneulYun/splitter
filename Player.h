@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "BulletStraight.h"
 #include "BulletReflection.h"
+#include "BulletSprinkle.h"
 
 class CPlayer : public CBaseObject
 {
