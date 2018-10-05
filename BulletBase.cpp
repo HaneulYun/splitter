@@ -4,6 +4,7 @@
 CBulletBase::CBulletBase()
 {
 	m_activeState = false;
+	m_hp = 0;
 }
 
 CBulletBase::~CBulletBase()

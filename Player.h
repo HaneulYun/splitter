@@ -2,6 +2,7 @@
 #include "BaseObject.h"
 #include "Timer.h"
 #include "BulletStraight.h"
+#include "BulletReflection.h"
 
 class CPlayer : public CBaseObject
 {
@@ -12,6 +13,7 @@ class CPlayer : public CBaseObject
 	DWORD m_OldBulletTime;
 	CTimer m_TimerWhirlWind;
 
+public:
 	int m_gunType;
 	int m_gunLevel;
 

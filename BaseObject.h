@@ -13,4 +13,5 @@ public:
 
 	bool hitBox(RECT rt);
 	bool hitPolyton(const CBaseObject* obj, Matrix matWorld);
+	Vector normalVector(Vector vec, Matrix matWorld);
 };

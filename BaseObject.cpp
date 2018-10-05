@@ -81,3 +81,20 @@ bool CBaseObject::hitPolyton(const CBaseObject* obj, Matrix matWorld)
 	}
 	return false;
 }
+
+Vector CBaseObject::normalVector(Vector vec, Matrix matWorld)
+{
+	Matrix mat;
+	POINT* A = new POINT[m_NumPolygon];
+	for (int i = 0; i < m_NumPolygon; ++i)
+	{
+		mat.Scale(m_scale);
+		A[i] = mat.Translate(m_Polygon[i]);
+		mat.Rotate(m_rotate);
+		A[i] = mat.Translate(A[i]);
+		mat.Move(m_Point.x, m_Point.y);
+		A[i] = mat.Translate(A[i]);
+
+		A[i] = matWorld.Translate(A[i]);
+	}
+}
