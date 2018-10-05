@@ -100,3 +100,14 @@ POINT Matrix::Translate(POINT p)
 
 	return temp;
 }
+
+Vector Matrix::Translate(Vector p)
+{
+	Vector	temp;
+	const float	w = 1.0f;
+
+	temp.x = p.x * m11 + p.y * m21 + w * m31;
+	temp.y = p.x * m12 + p.y * m22 + w * m32;
+
+	return temp;
+}

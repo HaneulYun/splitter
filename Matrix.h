@@ -1,4 +1,5 @@
 #pragma once
+#include "Vector.h"
 #include "stdafx.h"
 
 class Matrix
@@ -30,5 +31,6 @@ public:
 	Matrix operator+(const Matrix& mat);
 
 	POINT Translate(POINT p);
+	Vector Translate(Vector p);
 };
 
