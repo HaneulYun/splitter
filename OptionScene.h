@@ -2,6 +2,7 @@
 #include "BaseScene.h"
 #include "Text.h"
 #include "ButtonObject.h"
+#include "Timer.h"
 
 class OptionScene : public CBaseScene
 {
@@ -26,6 +27,8 @@ public:
 	CButtonObject m_MusicBar;
 	CButtonObject m_ScreenShakeBar;
 	CButtonObject m_ScreenShakeButton;
+
+	CTimer changeScene;
 
 public:
 	OptionScene();

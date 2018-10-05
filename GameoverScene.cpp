@@ -2,6 +2,9 @@
 #include "GameoverScene.h"
 #include "WndSystem.h"
 
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2+m_worldRect.right*(x/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+
 GameoverScene::GameoverScene()
 {
 	Initialize();
@@ -35,27 +38,27 @@ bool GameoverScene::Initialize()
 	m_TextFPS = new CText();
 
 	m_TextFPS->FontInitialize(20, "game over Regular", 30, 0);
-	m_TextFPS->ObjectInitialize(10, 10, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_TextFPS->ObjectInitialize(WIDTH_NORMALIZE(10), HEIGHT_NORMALIZE(10), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Gameover = new CText();
 	m_Gameover->FontInitialize(20, "Pixel", 150, 80);
-	m_Gameover->ObjectInitialize(280, 50, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_Gameover->ObjectInitialize(WIDTH_NORMALIZE(280), HEIGHT_NORMALIZE(50), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Score = new CText();
 	m_Score->FontInitialize(20, "Pixel", 50, 30);
-	m_Score->ObjectInitialize(450, 300, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_Score->ObjectInitialize(WIDTH_NORMALIZE(450), HEIGHT_NORMALIZE(300), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_BestScore = new CText();
 	m_BestScore->FontInitialize(20, "Pixel", 40, 25);
-	m_BestScore->ObjectInitialize(450, 400, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_BestScore->ObjectInitialize(WIDTH_NORMALIZE(450), HEIGHT_NORMALIZE(400), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Exit = new CText();
 	m_Exit->FontInitialize(20, "Pixel", 40, 25);
-	m_Exit->ObjectInitialize(500, 550, RGB(0x99, 0x99, 0x99), RGB(0x00, 0x00, 0x00), 1);
+	m_Exit->ObjectInitialize(WIDTH_NORMALIZE(500), HEIGHT_NORMALIZE(550), RGB(0x99, 0x99, 0x99), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Retry = new CText();
 	m_Retry->FontInitialize(20, "Pixel", 40, 25);
-	m_Retry->ObjectInitialize(680, 550, RGB(0x99, 0x99, 0x99), RGB(0x00, 0x00, 0x00), 1);
+	m_Retry->ObjectInitialize(WIDTH_NORMALIZE(680), HEIGHT_NORMALIZE(550), RGB(0x99, 0x99, 0x99), RGB(0x00, 0x00, 0x00), 1);
 	return true;
 }
 

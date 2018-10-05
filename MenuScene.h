@@ -22,6 +22,7 @@ public:
 	CImageObject m_JJang;
 
 	float mouseX, mouseY;
+	POINT mousePt;
 
 public:
 	MenuScene();

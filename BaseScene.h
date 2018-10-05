@@ -1,5 +1,7 @@
 #pragma once
 #include "IProcess.h"
+#define ratio(x,y,w,h) (g_pWindow->m_clientSize.cx*x < mouseX &&  mouseX < g_pWindow->m_clientSize.cx *x+w && g_pWindow->m_clientSize.cy * y < mouseY && mouseY < g_pWindow->m_clientSize.cy * y + h)
+
 
 class CBaseScene : public IProcess
 {
