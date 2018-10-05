@@ -93,7 +93,7 @@ bool IntroScene::Pulse()
 	m_jang->Pulse(str);
 	sprintf(str, "이 게임을 만드는데 도움을 주신분들");
 	m_people->Pulse(str);
-	sprintf(str, "윤하늘 윤하늘 윤하늘 최아도 최홍일 이상기 송주희 송인희");
+	sprintf(str, "윤하늘 남주영 이예은 최아도 최홍일 이상기 송주희 송인희");
 	m_people1->Pulse(str);
 
 	if (g_pSystem->m_pSoundManager == nullptr && initSound)
