@@ -90,11 +90,10 @@ bool CPlayer::Pulse()
 			}
 			break;
 		case 6:
-			if (GetTickCount() - old > 110)
+			if (GetTickCount() - old > 70)
 			{
 				old = GetTickCount();
-				for (int i = 0; i < m_gunLevel; ++i)
-					g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletGuided(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1)));
+				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletGuided(m_rotate));
 				float t = m_rotate + 0.75 + rand() % 50 / 100.0;
 				g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
 				g_pGameScene->SetShake(100, 1.5, m_rotate);
