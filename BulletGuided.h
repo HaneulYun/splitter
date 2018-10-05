@@ -8,8 +8,7 @@ class CBulletGuided : public CBulletBase
 	bool left;
 	bool right;
 
-	CTimer timerLeft;
-	CTimer timerRight;
+	float guidedModuls;
 public:
 	CBulletGuided(float direction);
 	~CBulletGuided();

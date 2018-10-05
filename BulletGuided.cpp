@@ -7,6 +7,7 @@ CBulletGuided::CBulletGuided(float direction)
 {
 	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
 	m_speed = 2500;
+	guidedModuls = 0;
 
 	Initialize();
 }
@@ -61,7 +62,7 @@ bool CBulletGuided::Pulse()
 				{
 					Vector vec{ cosf(m_rotate*PI), sinf(m_rotate*PI) };
 					Vector vec2{ float(g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point.x - m_Point.x), float(g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point.y - m_Point.y) };
-					if (vec.dot(vec2) < -400)
+					if (vec.dot(vec2) < -1600)
 						continue;
 
 					distance = dist;
@@ -73,19 +74,12 @@ bool CBulletGuided::Pulse()
 		{
 			Vector vec{ cosf((m_rotate+0.5)*PI), sinf((m_rotate+0.5)*PI) };
 			Vector vec2{ bs->m_Point.x - m_Point.x, bs->m_Point.y - m_Point.y };
-			//if (!timerLeft.IsValidTimer() && !timerRight.IsValidTimer())
-			//{
-				if (vec.dot(vec2) < 0)
-				{
-					timerLeft.InitTimer(4000);
-					timerRight.InitTimer(0);
-				}
-				else
-				{
-					timerRight.InitTimer(4000);
-					timerLeft.InitTimer(0);
-				}
-			//}
+			guidedModuls = max( (1600 - vec.dot(vec2)) / 3200.f, 0);
+			if (vec.dot(vec2) < 0)
+				m_direction -= (0.6 + guidedModuls) * g_pSystem->GetTimeStep();
+			else
+				m_direction += (0.6 + guidedModuls) *g_pSystem->GetTimeStep();
+			m_rotate = m_direction;
 			float r = 1 - (1.f / 1600 * distance);
 			m_Color = RGB(0xff, (1-r)*0xff, (1 - r) *0xff);
 			if(bs)
@@ -93,19 +87,6 @@ bool CBulletGuided::Pulse()
 		}
 		else
 			m_Color = RGB(0xff, 0xff, 0xff);
-	}
-
-	timerLeft.IsElapseTimer();
-	timerRight.IsElapseTimer();
-	if (timerLeft.IsValidTimer())
-	{
-		m_direction -= 0.6 * g_pSystem->GetTimeStep();
-		m_rotate = m_direction;
-	}
-	if (timerRight.IsValidTimer())
-	{
-		m_direction += 0.6 *g_pSystem->GetTimeStep();
-		m_rotate = m_direction;
 	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_speed * cos(m_direction * PI);
