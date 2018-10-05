@@ -48,7 +48,7 @@ bool CEnemyManager::Pulse()
 					}
 					else
 					{
-						g_pGameScene->m_BulletManager->m_Bullet[j]->m_direction += 1 - 0.3 + 0.6 * (rand() % 200 / 200.0);
+						g_pGameScene->m_BulletManager->m_Bullet[j]->m_direction += 1 - 0.4 + 1.8 * (rand() % 200 / 200.0);
 					}
 					m_Enemy[i]->m_Hp -= g_pGameScene->m_BulletManager->m_Bullet[j]->m_damage;
 					if (m_Enemy[i]->m_Hp <= 0)

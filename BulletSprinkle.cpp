@@ -24,16 +24,18 @@ bool CBulletSprinkle::Initialize()
 
 	m_Point = { 0, 0 };
 	m_rotate = m_direction;
-	m_scale = 0.7;
+	m_scale = 1.f;
 
 
-	m_NumPolygon = 4;
+	m_NumPolygon = 6;
 	m_Polygon = new POINT[m_NumPolygon];
 	{
-		m_Polygon[0] = { 0,  -8 };
-		m_Polygon[1] = { -56, 0 };
-		m_Polygon[2] = { 0,   8 };
-		m_Polygon[3] = { 56,  0 };
+		m_Polygon[0] = { -20, -5 };
+		m_Polygon[1] = { -40,  0 };
+		m_Polygon[2] = { -20,  5 };
+		m_Polygon[3] = {  20,  5 };
+		m_Polygon[4] = {  40,  0 };
+		m_Polygon[5] = {  20, -5 };
 	}
 
 	return true;

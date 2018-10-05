@@ -97,4 +97,5 @@ Vector CBaseObject::normalVector(Vector vec, Matrix matWorld)
 
 		A[i] = matWorld.Translate(A[i]);
 	}
+	return {};
 }

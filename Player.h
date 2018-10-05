@@ -5,6 +5,8 @@
 #include "BulletReflection.h"
 #include "BulletSprinkle.h"
 
+#include "BulletGuided.h"
+
 class CPlayer : public CBaseObject
 {
 	DWORD old;

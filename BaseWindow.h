@@ -37,9 +37,6 @@ public:
 	int OnTimer(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	int OnKeyDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	int OnKeyUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
-	//int OnKeyUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
-	//int OnKeyUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
-	//int OnKeyUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	int OnLButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	int OnLButtonUp(HWND hWnd, WPARAM wParam, LPARAM lParam);
 	int OnRButtonDown(HWND hWnd, WPARAM wParam, LPARAM lParam);
