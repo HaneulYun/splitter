@@ -48,7 +48,6 @@ bool OptionScene::Initialize()
 	r = t;
 	m_barSound = new CText;
 	m_barSound->FontInitialize(30, "Delta Universe-Regular", 90, 0);
-	m_barSound->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(125), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 	m_barSound->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(140), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Music = new CText;
@@ -59,10 +58,10 @@ bool OptionScene::Initialize()
 	r = t;
 	m_barMusic = new CText;
 	m_barMusic->FontInitialize(30, "Delta Universe-Regular", 90, 0);
-	// ï¿½ï¿½Å©ï¿½ï¿½ ï¿½×¸ï¿½
+	// ½ºÅ©·Ñ ³×¸ð
 	m_barMusic->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(300), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½×¸ï¿½
+	// ¹ÂÁ÷ ±ä ³×¸ð
 	m_MusicBar.Initialize(-850, 0, RGB(0x77, 0x77, 0x77), CButtonObject::eButtonType_scroll);
 
 	m_ScreenShake = new CText;
