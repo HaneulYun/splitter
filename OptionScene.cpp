@@ -93,6 +93,11 @@ bool OptionScene::Initialize()
 	m_Exit = new CText;
 	m_Exit->FontInitialize(30, "Delta Universe-Regular", 120, 30);
 	m_Exit->ObjectInitialize(WIDTH_NORMALIZE(880), HEIGHT_NORMALIZE(420), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	
+	SoundRatio = 1.f;
+	MusicRatio = 1.f;
+	ScreenRatio = 1.f;
+	
 	return true;
 }
 
@@ -143,7 +148,7 @@ bool OptionScene::Pulse()
 			return true;
 		}
 	}
-	else if (ratio(4 / 16, 9 / 36, 50, 50))
+	else if (ratio(4 / 16 * SoundRatio, 9 / 36, 50, 50))
 	{
 		m_barSound->m_Color = RGB(247, 255, 83);
 		if (g_pInputManager->m_MouseState.btn[0]) {
@@ -154,17 +159,19 @@ bool OptionScene::Pulse()
 				m_barSound->m_Point.x = 80;
 		}
 	}
-	else if (ratio(4/16, 33/72, 50, 50)) {
+	else if (ratio(4/16 + MusicRatio, 33/72, 50, 50)) {
 		m_barMusic->m_Color = RGB(247, 255, 83);
 		if (g_pInputManager->m_MouseState.btn[0]) {
-			m_barMusic->m_Point.x = g_pInputManager->m_MouseState.x - 25; // mouseX;
+			//m_barMusic->m_Point.x = g_pInputManager->m_MouseState.x - 25; // mouseX;
+			MusicRatio += 1 / 24;
+			m_barMusic->m_Point.x = (1 / 4 + MusicRatio) *  24;
 			if (m_barMusic->m_Point.x > 560)
 				m_barMusic->m_Point.x = 560;
 			if (m_barMusic->m_Point.x < 80)
 				m_barMusic->m_Point.x = 80;
 		}
 	}
-	else if (ratio(4 / 16, 53 / 72, 50, 50))
+	else if (ratio(4 / 16 * ScreenRatio, 53 / 72, 50, 50))
 	{
 		m_barScreen->m_Color = RGB(247, 255, 83);
 		if (g_pInputManager->m_MouseState.btn[0]) {
@@ -193,9 +200,9 @@ bool OptionScene::Pulse()
 		m_OFF->m_Color = RGB(247, 255, 83);
 	}
 
-	g_pSoundManager->m_effectSoundChannel->setVolume(1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barSound->m_Point.x - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0))));
-	g_pSoundManager->m_BGMChannel->setVolume(1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barMusic->m_Point.x - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0))));
-	g_pSystem->m_abc = 1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barSound->m_Point.x - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0)));
+	g_pSoundManager->m_effectSoundChannel->setVolume(1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barSound->m_Point.x  - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0))));
+	g_pSoundManager->m_BGMChannel->setVolume(1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barMusic->m_Point.x * 30  - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0))));
+	g_pSystem->m_abc = 1.0 / (WIDTH_NORMALIZE(480) - WIDTH_NORMALIZE(0)) * (m_barSound->m_Point.x  - (WIDTH_NORMALIZE(80) - WIDTH_NORMALIZE(0)));
 
 	char str[30];
 
