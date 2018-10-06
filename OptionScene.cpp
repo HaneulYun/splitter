@@ -49,6 +49,7 @@ bool OptionScene::Initialize()
 	m_barSound = new CText;
 	m_barSound->FontInitialize(30, "Delta Universe-Regular", 90, 0);
 	m_barSound->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(125), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_barSound->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(140), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_Music = new CText;
 	m_Music->FontInitialize(30, "Delta Universe-Regular", 50, 0);
@@ -58,13 +59,15 @@ bool OptionScene::Initialize()
 	r = t;
 	m_barMusic = new CText;
 	m_barMusic->FontInitialize(30, "Delta Universe-Regular", 90, 0);
+	// ��ũ�� �׸�
 	m_barMusic->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(300), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
+	// ���� �� �׸�
 	m_MusicBar.Initialize(-850, 0, RGB(0x77, 0x77, 0x77), CButtonObject::eButtonType_scroll);
 
 	m_ScreenShake = new CText;
 	m_ScreenShake->FontInitialize(30, "Delta Universe-Regular", 50, 0);
-	m_ScreenShake->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(80), RGB(0xaa, 0xaa, 0xaa), RGB(0x00, 0x00, 0x00), 1);
+	m_ScreenShake->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(450), RGB(0xaa, 0xaa, 0xaa), RGB(0x00, 0x00, 0x00), 1);
 
 	m_ScreenShakeBar.Initialize(-850, 600, RGB(0x77, 0x77, 0x77), CButtonObject::eButtonType_scroll);
 	//m_ScreenShakeButton.Initialize(-850, 600, RGB(0xff, 0xff, 0xff), CButtonObject::eButtonType_button);
@@ -72,7 +75,7 @@ bool OptionScene::Initialize()
 	r = g_pSystem->m_abc;
 	m_barScreen = new CText;
 	m_barScreen->FontInitialize(30, "Delta Universe-Regular", 90, 0);
-	m_barScreen->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(510), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_barScreen->ObjectInitialize(WIDTH_NORMALIZE(80 + 480 * r), HEIGHT_NORMALIZE(495), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_FullScreen = new CText;
 	m_FullScreen->FontInitialize(30, "Delta Universe-Regular", 50, 0);
@@ -141,19 +144,7 @@ bool OptionScene::Pulse()
 			return true;
 		}
 	}
-	else if (m_barMusic->m_Point.x - 30 < mouseX && mouseX < m_barMusic->m_Point.x + 60
-		&& m_barMusic->m_Point.y + 50 < mouseY && mouseY < m_barMusic->m_Point.y + 100) {
-		m_barMusic->m_Color = RGB(247, 255, 83);
-		if (g_pInputManager->m_MouseState.btn[0]) {
-			m_barMusic->m_Point.x = g_pInputManager->m_MouseState.x - 25; // mouseX;
-			if (m_barMusic->m_Point.x > 560)
-				m_barMusic->m_Point.x = 560;
-			if (m_barMusic->m_Point.x < 80)
-				m_barMusic->m_Point.x = 80;
-		}
-	}
-	else if (m_barSound->m_Point.x - 30 < mouseX && mouseX < m_barSound->m_Point.x + 60
-		&& m_barSound->m_Point.y + 50 < mouseY && mouseY < m_barSound->m_Point.y + 100)
+	else if (ratio(4 / 16, 9 / 36, 50, 50))
 	{
 		m_barSound->m_Color = RGB(247, 255, 83);
 		if (g_pInputManager->m_MouseState.btn[0]) {
@@ -164,8 +155,17 @@ bool OptionScene::Pulse()
 				m_barSound->m_Point.x = 80;
 		}
 	}
-	else if (m_barScreen->m_Point.x - 30 < mouseX && mouseX < m_barScreen->m_Point.x + 60
-		&& m_barScreen->m_Point.y + 50 < mouseY && mouseY < m_barScreen->m_Point.y + 100)
+	else if (ratio(4/16, 33/72, 50, 50)) {
+		m_barMusic->m_Color = RGB(247, 255, 83);
+		if (g_pInputManager->m_MouseState.btn[0]) {
+			m_barMusic->m_Point.x = g_pInputManager->m_MouseState.x - 25; // mouseX;
+			if (m_barMusic->m_Point.x > 560)
+				m_barMusic->m_Point.x = 560;
+			if (m_barMusic->m_Point.x < 80)
+				m_barMusic->m_Point.x = 80;
+		}
+	}
+	else if (ratio(4 / 16, 53 / 72, 50, 50))
 	{
 		m_barScreen->m_Color = RGB(247, 255, 83);
 		if (g_pInputManager->m_MouseState.btn[0]) {
