@@ -33,6 +33,18 @@ bool CText::FontInitialize(int strlen, char* url, int _height, int _width, bool 
 
 	return true;
 }
+void CText::resetX(int x)
+{
+	m_Point.x = x;
+	m_Polygon[0] = { LONG(m_Point.x), LONG(m_Point.y) };
+	m_Polygon[1] = { LONG(m_Point.x + 1), LONG(m_Point.y + 1) };
+}
+void CText::resetY(int y)
+{
+	m_Point.y = y;
+	m_Polygon[0] = { LONG(m_Point.x), LONG(m_Point.y) };
+	m_Polygon[1] = { LONG(m_Point.x + 1), LONG(m_Point.y + 1) };
+}
 bool CText::ObjectInitialize(int x, int y, COLORREF color, COLORREF bk, int mode)
 {
 	m_Point.x = x;

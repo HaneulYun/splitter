@@ -13,6 +13,8 @@ public:
 	virtual void Terminate() override;
 	virtual bool Pulse() override;
 
+	void resetX(int x);
+	void resetY(int y);
 	bool FontInitialize(int strlen, char* url, int _height, int _width, bool _underLine = false);
 	bool ObjectInitialize(int x, int y, COLORREF color, COLORREF bk, int mode);
 	bool Pulse(char* str);

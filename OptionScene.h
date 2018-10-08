@@ -30,9 +30,9 @@ public:
 
 	CTimer changeScene;
 
-	double SoundRatio;
-	double MusicRatio;
-	double ScreenRatio;
+	float SoundRatio;
+	float MusicRatio;
+	float ScreenRatio;
 
 public:
 	OptionScene();

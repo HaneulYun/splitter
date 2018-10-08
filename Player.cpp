@@ -46,7 +46,7 @@ bool CPlayer::Pulse()
 	if (g_pInputManager->m_MouseState.btn[0])
 	{
 		POINT mousePt;
-		
+
 		mousePt = g_pInputManager->m_mousePoint;
 
 		m_rotate = atan2(mousePt.y - m_Point.y, mousePt.x - m_Point.x) / PI;
@@ -90,7 +90,7 @@ bool CPlayer::Pulse()
 			}
 			break;
 		case 6:
-			if (GetTickCount() - old > 70)
+			if (GetTickCount() - old > 70 + (6 - m_gunLevel) * 30)
 			{
 				old = GetTickCount();
 				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletGuided(m_rotate));

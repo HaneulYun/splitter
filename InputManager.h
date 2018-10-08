@@ -38,3 +38,5 @@ public:
 	}
 };
 
+#define ratioNilXInverse ( (float)g_pInputManager->m_MouseState.x / g_pWindow->m_clientSize.cx * 1280 - 21)
+#define ratioNilYInverse ( (float)g_pInputManager->m_MouseState.y / g_pWindow->m_clientSize.cy * 720 - 59)

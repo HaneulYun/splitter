@@ -3,8 +3,8 @@
 #include "WndSystem.h"
 
 
-#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2.f + m_worldRect.right*(x/1280.f))
-#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2.f + m_worldRect.right*((x)/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*((y)/720.f))
 
 
 MenuScene::MenuScene()
@@ -83,7 +83,7 @@ bool MenuScene::Pulse()
 	char str[20];
 	sprintf(str, "FPS : %.2f", g_pSystem->GetFPS());
 	m_TextFPS->Pulse(str);
-	sprintf(str, "SPLIITER");
+	sprintf(str, "SPLITTER");
 	m_TextSPLITTER->Pulse(str);
 
 	sprintf(str, "Endless Mode");
@@ -103,9 +103,9 @@ bool MenuScene::Pulse()
 	RECT mouseRect{ mousePoint.x, mousePoint.y, mousePoint.x, mousePoint.y};
 
 	
-	if (ratio(1/4,2/5,200,50)) {
+	if(ratioNil(300, 250, 240,165)){
+	//if (ratio(1/4,2/5,200,50)) {
 	//if (m_TextEndless->hitBox(mouseRect)) {
-
 		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(270);
 		m_TextEndless->m_Point.y = HEIGHT_NORMALIZE(250);
 		m_TextEndless->m_Color = RGB(0xff, 0xff, 0xff);

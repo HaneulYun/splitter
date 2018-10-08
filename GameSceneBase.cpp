@@ -130,6 +130,7 @@ bool CGameSceneBase::Pulse()
 	m_EnemyManager->Pulse();
 	m_EffectManager->Pulse();
 
+
 	char str[20];
 	sprintf(str, "%d", m_Score);
 	m_TextSCORE->Pulse(str);

@@ -25,7 +25,7 @@ bool CBulletGuided::Initialize()
 	m_Point = { 0, 0 };
 	m_rotate = m_direction;
 	m_scale = 1.0;
-	m_damage = 1.f;
+	m_damage = 3.f;
 
 	left = right = false;
 
@@ -81,12 +81,12 @@ bool CBulletGuided::Pulse()
 				m_direction += (0.6 + guidedModuls) *g_pSystem->GetTimeStep();
 			m_rotate = m_direction;
 			float r = 1 - (1.f / 1600 * distance);
-			m_Color = RGB(0xff, (1-r)*0xff, (1 - r) *0xff);
-			if(bs)
-				bs->m_Color = RGB(0xff, (1 - r) * 0xff, (1 - r) * 0xff);
+			//m_Color = RGB(0xff, (1-r)*0xff, (1 - r) *0xff);
+			//if(bs)
+			//	bs->m_Color = RGB(0xff, (1 - r) * 0xff, (1 - r) * 0xff);
 		}
-		else
-			m_Color = RGB(0xff, 0xff, 0xff);
+		//else
+		//	m_Color = RGB(0xff, 0xff, 0xff);
 	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_speed * cos(m_direction * PI);
