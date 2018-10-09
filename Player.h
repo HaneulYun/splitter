@@ -4,6 +4,7 @@
 #include "BulletStraight.h"
 #include "BulletReflection.h"
 #include "BulletSprinkle.h"
+#include "BulletLaser.h"
 
 #include "BulletGuided.h"
 

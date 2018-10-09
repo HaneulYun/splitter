@@ -47,3 +47,4 @@
 *.user
 /*.vcxproj
 /*.user
+splitter.vcxproj.filters

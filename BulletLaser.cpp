@@ -4,13 +4,15 @@
 #include "GameSceneBase.h"
 
 
-CBulletLaser::CBulletLaser(float direction, int hp)
+CBulletLaser::CBulletLaser(float direction, float time)
 {
-	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
-	m_speed = 4000;
-	m_hp = hp;
+	//m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
+	m_direction = direction + (rand() % 100 / 2000.0) - 0.025;
+	m_speed = 0;
 
 	Initialize();
+
+	m_validTime.InitTimer(time);
 }
 
 
@@ -28,14 +30,16 @@ bool CBulletLaser::Initialize()
 	m_rotate = m_direction;
 	m_scale = 1.0;
 
+	m_damage = g_pSystem->GetTimeStep() * 20;
 
-	m_NumPolygon = 4;
+	m_NumPolygon = 122;
 	m_Polygon = new POINT[m_NumPolygon];
 	{
-		m_Polygon[0] = { -8, -8 };
-		m_Polygon[1] = { -8,  8 };
-		m_Polygon[2] = { 8,  8 };
-		m_Polygon[3] = { 8, -8 };
+		for (int i = 0; i < 61; ++i)
+		{
+			m_Polygon[i] = { i * 50, -4 };
+			m_Polygon[61 + i] = { 3000 - i * 50, 4 };
+		}
 	}
 
 	return true;
@@ -43,22 +47,14 @@ bool CBulletLaser::Initialize()
 
 void CBulletLaser::Terminate()
 {
-	if (m_activeState)
-		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
 
 bool CBulletLaser::Pulse()
 {
 	if (!m_activeState) m_activeState = true;
-
-	m_Point.x += g_pSystem->GetTimeStep() * m_speed * cos(m_direction * PI);
-	m_Point.y += g_pSystem->GetTimeStep() * m_speed * sin(m_direction * PI);
-
-	POINT pt = { m_Point.x, m_Point.y };
-	pt = g_pSystem->m_pCurProcess->GetMatrix().Translate(pt);
-
-	if (pt.x + 60 < 0 || pt.y + 60 < 0 ||
-		pt.x - 60 > +g_pWindow->m_clientSize.cx || pt.y - 60 > +g_pWindow->m_clientSize.cy)
-		return true;
+	m_damage = g_pSystem->GetTimeStep() * 20;
+	if (m_validTime.IsValidTimer())
+		if (m_validTime.IsElapseTimer())
+			return true;
 	return false;
 }

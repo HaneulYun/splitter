@@ -1,8 +1,10 @@
 #pragma once
 #include "EnemyBase.h"
+#include "Timer.h"
 
 class CEnemyManager
 {
+	CTimer m_sortTime;
 public:
 	std::deque<CEnemyBase*> m_Enemy;
 public:

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "stdafx.h"
 #include "EnemyManager.h"
 #include "GameSceneBase.h"
@@ -5,6 +6,7 @@
 CEnemyManager::CEnemyManager()
 {
 	Initialize();
+	m_sortTime.InitTimer(1000);
 }
 
 CEnemyManager::~CEnemyManager()
@@ -21,6 +23,12 @@ void CEnemyManager::Terminate()
 }
 bool CEnemyManager::Pulse()
 {
+	if (m_sortTime.IsValidTimer())
+		if (m_sortTime.IsElapseTimer()) {
+			if (m_Enemy.size() > 0)
+				std::sort(begin(m_Enemy), end(m_Enemy), [](CEnemyBase* p, CEnemyBase* q) { return p->m_Point.distance({}) > q->m_Point.distance({}); });
+			m_sortTime.InitTimer(1000);
+		}
 	for (int i = 0; i < m_Enemy.size(); ++i)
 	{
 		if (m_Enemy[i] == nullptr)
@@ -41,7 +49,8 @@ bool CEnemyManager::Pulse()
 			{
 				if (m_Enemy[i]->hitPolyton(g_pGameScene->m_BulletManager->m_Bullet[j], g_pGameScene->m_matWorld))
 				{
-					if (--(g_pGameScene->m_BulletManager->m_Bullet[j]->m_hp) < 0)
+					if (g_pGameScene->m_Player->m_gunType == 4);
+					else if (--(g_pGameScene->m_BulletManager->m_Bullet[j]->m_hp) < 0)
 					{
 						delete g_pGameScene->m_BulletManager->m_Bullet[j];
 						g_pGameScene->m_BulletManager->m_Bullet.erase(g_pGameScene->m_BulletManager->m_Bullet.begin() + j);
