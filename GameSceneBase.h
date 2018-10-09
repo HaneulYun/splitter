@@ -21,6 +21,7 @@ public:
 	CEffectManager* m_EffectManager;
 
 	int m_Score;
+	int m_BestScore;
 	int m_isGameOver;
 
 	CText* m_TextSCORE;
