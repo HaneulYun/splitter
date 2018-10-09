@@ -88,7 +88,15 @@ bool CGameSceneBase::Initialize()
 	m_skill3->Initialize("resources/image/skill3.jpg", -1500, 260, 1.0f);
 
 	m_Score = 0;
-	m_BestScore = 0;
+
+	if (!outputScore.is_open())
+		m_BestScore = 0;
+	else {
+		outputScore.open("score.txt");
+		outputScore >> m_BestScore;
+		outputScore.close();
+	}
+	
 	return true;
 }
 
@@ -153,7 +161,12 @@ bool CGameSceneBase::Pulse()
 	if (m_isGameOver)
 	{
 		g_pSystem->m_Score = m_Score;
-		g_pSystem->m_BestSocre = m_BestScore;
+		if (m_Score > m_BestScore)
+			m_BestScore = m_Score;
+		inputScore.open("score.txt", std::ios::trunc);
+		inputScore << m_BestScore;
+		inputScore.close();
+		//g_pSystem->m_BestScore = m_BestScore;
 		g_pSystem->ChangeProcess(eProcessType_GameoverScene);
 	}
 	return true;
@@ -244,3 +257,5 @@ void CGameSceneBase::applyScreenShake(int delta) {
 	actual.x = xOffset;
 	actual.y = yOffset;
 }
+
+

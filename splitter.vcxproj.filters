@@ -268,7 +268,10 @@
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClCompile>
     <ClCompile Include="RedZoneFX.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="CSupporter.cpp">
+      <Filter>소스 파일\ObjectClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,7 +453,10 @@
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClInclude>
     <ClInclude Include="RedZoneFX.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="CSupporter.h">
+      <Filter>소스 파일\ObjectClass</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

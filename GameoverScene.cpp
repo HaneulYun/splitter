@@ -103,7 +103,7 @@ bool GameoverScene::Pulse()
 	m_Gameover->Pulse(str);
 	sprintf(str, "SCORE:         %d", g_pSystem->m_Score);
 	m_Score->Pulse(str);
-	sprintf(str, "BEST SCORE:    %d", g_pSystem->m_BestSocre);
+	sprintf(str, "BEST SCORE:    %d", g_pSystem->m_BestScore);
 	m_BestScore->Pulse(str);
 	sprintf(str, "EXIT");
 	m_Exit->Pulse(str);

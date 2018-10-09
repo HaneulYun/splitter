@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <fstream>
 #include "BaseScene.h"
 #include "Player.h"
 #include "BulletManager.h"
@@ -9,6 +11,8 @@
 #include "ImageObject.h"
 
 #include "WndSystem.h"
+
+
 
 #define g_pGameScene dynamic_cast<CGameSceneBase*>(dynamic_cast<CBaseScene*>(g_pSystem->m_pCurProcess))
 
@@ -23,6 +27,9 @@ public:
 	int m_Score;
 	int m_BestScore;
 	int m_isGameOver;
+	std::ofstream inputScore;
+	std::ifstream outputScore;
+	
 
 	CText* m_TextSCORE;
 	CText* m_TextFPS;
@@ -70,4 +77,3 @@ public:
 	void updateShake(int delta);
 	void applyScreenShake(int delta);
 };
-
