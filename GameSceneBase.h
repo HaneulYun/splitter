@@ -1,6 +1,4 @@
 #pragma once
-#include <iostream>
-#include <fstream>
 #include "BaseScene.h"
 #include "Player.h"
 #include "BulletManager.h"
@@ -11,7 +9,7 @@
 #include "ImageObject.h"
 
 #include "WndSystem.h"
-
+#include <stdio.h>
 
 
 #define g_pGameScene dynamic_cast<CGameSceneBase*>(dynamic_cast<CBaseScene*>(g_pSystem->m_pCurProcess))
@@ -27,9 +25,8 @@ public:
 	int m_Score;
 	int m_BestScore;
 	int m_isGameOver;
-	std::ofstream inputScore;
-	std::ifstream outputScore;
-	
+
+	FILE* fp;
 
 	CText* m_TextSCORE;
 	CText* m_TextFPS;

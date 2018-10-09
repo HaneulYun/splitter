@@ -60,7 +60,7 @@ bool CGameSceneBase::Initialize()
 	m_TextVFX->FontInitialize(20, "±¼¸²", 20, 0);
 	m_TextVFX->ObjectInitialize(10, 50, RGB(0x99, 0x99, 0x99), RGB(0x00, 0x00, 0x00), 1);
 	m_TextENY = new CText();
-	m_TextENY->FontInitialize(20, "±¼¸²",  20, 0);
+	m_TextENY->FontInitialize(20, "±¼¸²", 20, 0);
 	m_TextENY->ObjectInitialize(10, 70, RGB(0x66, 0x66, 0x66), RGB(0x00, 0x00, 0x00), 1);
 	m_TextWAV = new CText();
 	m_TextWAV->FontInitialize(20, "±¼¸²", 20, 0);
@@ -89,14 +89,15 @@ bool CGameSceneBase::Initialize()
 
 	m_Score = 0;
 
-	if (!outputScore.is_open())
-		m_BestScore = 0;
-	else {
-		outputScore.open("score.txt");
-		outputScore >> m_BestScore;
-		outputScore.close();
+	fp = fopen("score.txt", "r");
+	if (fp == NULL) {
+		return true;
 	}
-	
+	fscanf(fp, "%d", &m_BestScore);
+	fclose(fp);
+	//if (m_BestScore == 0)
+	//	m_BestScore = 10;
+
 	return true;
 }
 
@@ -160,13 +161,14 @@ bool CGameSceneBase::Pulse()
 		g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	if (m_isGameOver)
 	{
-		g_pSystem->m_Score = m_Score;
 		if (m_Score > m_BestScore)
 			m_BestScore = m_Score;
-		inputScore.open("score.txt", std::ios::trunc);
-		inputScore << m_BestScore;
-		inputScore.close();
-		//g_pSystem->m_BestScore = m_BestScore;
+		fp = fopen("score.txt", "w");
+		fprintf(fp, "%d", m_BestScore);
+		fclose(fp);
+
+		g_pSystem->m_Score = m_Score;
+		g_pSystem->m_BestScore = m_BestScore;
 		g_pSystem->ChangeProcess(eProcessType_GameoverScene);
 	}
 	return true;
@@ -192,7 +194,7 @@ void CGameSceneBase::ApiRender(Matrix mat)
 	for (int i = 0; i < 2; ++i)
 		if (m_Player->m_gunLevel == 6)
 			m_Player->m_supporter[i].Render(mat);
-	for(int i = 2; i < 5; ++i)
+	for (int i = 2; i < 5; ++i)
 		if (m_Player->m_SuperSupporter)
 			m_Player->m_supporter[i].Render(mat);
 	m_Player->Render(mat);
