@@ -4,7 +4,7 @@
 #include "GameSceneBase.h"
 
 
-BulletLaser::BulletLaser(float direction, int hp)
+CBulletLaser::CBulletLaser(float direction, int hp)
 {
 	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
 	m_speed = 4000;
@@ -14,12 +14,12 @@ BulletLaser::BulletLaser(float direction, int hp)
 }
 
 
-BulletLaser::~BulletLaser()
+CBulletLaser::~CBulletLaser()
 {
 	Terminate();
 }
 
-bool BulletLaser::Initialize()
+bool CBulletLaser::Initialize()
 {
 	m_eRenderType = eRenderType_Polygon;
 	m_Color = RGB(0xff, 0xff, 0xff);
@@ -41,13 +41,13 @@ bool BulletLaser::Initialize()
 	return true;
 }
 
-void BulletLaser::Terminate()
+void CBulletLaser::Terminate()
 {
 	if (m_activeState)
 		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
 
-bool BulletLaser::Pulse()
+bool CBulletLaser::Pulse()
 {
 	if (!m_activeState) m_activeState = true;
 

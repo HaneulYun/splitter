@@ -4,7 +4,7 @@
 #include "GameSceneBase.h"
 
 
-Bulletbomb::Bulletbomb(float direction, int hp)
+CBulletbomb::CBulletbomb(float direction, int hp)
 {
 	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
 	m_speed = 4000;
@@ -14,12 +14,12 @@ Bulletbomb::Bulletbomb(float direction, int hp)
 }
 
 
-Bulletbomb::~Bulletbomb()
+CBulletbomb::~CBulletbomb()
 {
 	Terminate();
 }
 
-bool Bulletbomb::Initialize()
+bool CBulletbomb::Initialize()
 {
 	m_eRenderType = eRenderType_Polygon;
 	m_Color = RGB(0xff, 0xff, 0xff);
@@ -40,12 +40,12 @@ bool Bulletbomb::Initialize()
 
 	return true;
 }
-void Bulletbomb::Terminate()
+void CBulletbomb::Terminate()
 {
 	if (m_activeState)
 		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
-bool Bulletbomb::Pulse()
+bool CBulletbomb::Pulse()
 {
 	if (!m_activeState) m_activeState = true;
 
