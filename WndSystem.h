@@ -13,7 +13,7 @@ class CWndSystem : protected CBaseWindow,
 {
 public:
 	int m_Score;
-	int m_BestSocre;
+	int m_BestScore;
 	IProcess* m_pCurProcess;
 	CSoundManager* m_pSoundManager;
 	CGdi* m_pGdi;
