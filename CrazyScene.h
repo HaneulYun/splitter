@@ -13,7 +13,7 @@ public:
 	int m_spawnE0108;
 	int m_spawnE0110;
 
-	int OriginalShakeLevel;
+	float OriginalShakeLevel;
 public:
 	CrazyScene();
 	~CrazyScene();

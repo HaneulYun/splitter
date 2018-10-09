@@ -5,11 +5,12 @@
 #include "EnemyRotatingTwoTriangleUp.h"
 #include "EnemyRotatingTriangleHavingShield.h"
 
+
 CrazyScene::CrazyScene()
 {
 	g_pSoundManager->Pulse(m_pChannel, 1);
 	m_spawnE0101.InitTimer(350);
-	OriginalShakeLevel =  g_pSystem->m_abc;
+	OriginalShakeLevel = g_pSystem->m_abc;
 	g_pSystem->m_abc = 3.0;
 }
 
