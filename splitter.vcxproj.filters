@@ -264,6 +264,9 @@
     <ClCompile Include="EffectLine.cpp">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="RedLine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -439,6 +442,9 @@
     </ClInclude>
     <ClInclude Include="EffectLine.h">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="RedLine.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
