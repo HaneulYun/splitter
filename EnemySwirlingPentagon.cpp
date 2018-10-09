@@ -2,6 +2,7 @@
 #include "EnemySwirlingPentagon.h"
 #include "WndSystem.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemySwirlingPentagon::CEnemySwirlingPentagon()
 {
@@ -36,6 +37,8 @@ bool CEnemySwirlingPentagon::Initialize()
 	m_Hp = 10;
 	m_AddScore = 4;
 
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemySwirlingPentagon::Terminate()
@@ -48,6 +51,13 @@ void CEnemySwirlingPentagon::Terminate()
 bool CEnemySwirlingPentagon::Pulse()
 {
 	CEnemyBase::Pulse();
+
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_moveSpeed * cos(m_moveDirection * PI);
 	m_Point.y += g_pSystem->GetTimeStep() * m_moveSpeed * sin(m_moveDirection * PI);

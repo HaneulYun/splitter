@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyRotatingTwoTriangleDown.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemyRotatingTwoTriangleDown::CEnemyRotatingTwoTriangleDown()
 {
@@ -37,6 +38,8 @@ bool CEnemyRotatingTwoTriangleDown::Initialize()
 	m_Hp = 25;
 	m_AddScore = 4;
 
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemyRotatingTwoTriangleDown::Terminate()
@@ -49,6 +52,14 @@ void CEnemyRotatingTwoTriangleDown::Terminate()
 bool CEnemyRotatingTwoTriangleDown::Pulse()
 {
 	CEnemyBase::Pulse();
+
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
+
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_moveSpeed * cos(m_moveDirection * PI);
 	m_Point.y += g_pSystem->GetTimeStep() * m_moveSpeed * sin(m_moveDirection * PI);

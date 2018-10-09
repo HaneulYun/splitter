@@ -7,6 +7,7 @@ public:
 	float m_moveSpeed;
 	float m_rotateSpeed;
 	float m_moveDirection;
+	CTimer m_timerAfterEffect;
 public:
 	CEnemyRotatingTwoTriangleUp();
 	~CEnemyRotatingTwoTriangleUp();

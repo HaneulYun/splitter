@@ -2,6 +2,7 @@
 #include "EnemyRotatingTriangleHavingShield.h"
 #include "EnemyRotatingTriangleShield.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemyRotatingTriangleHavingShield::CEnemyRotatingTriangleHavingShield()
 {
@@ -45,6 +46,9 @@ bool CEnemyRotatingTriangleHavingShield::Initialize()
 		m_pShield[i]->m_Point = m_Point;
 		m_pShield[i]->m_rotate = 2.0 / 3 * i;
 	}
+
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemyRotatingTriangleHavingShield::Terminate()
@@ -66,6 +70,13 @@ void CEnemyRotatingTriangleHavingShield::Terminate()
 bool CEnemyRotatingTriangleHavingShield::Pulse()
 {
 	CEnemyBase::Pulse();
+
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_moveSpeed * cos(m_moveDirection * PI);
 	m_Point.y += g_pSystem->GetTimeStep() * m_moveSpeed * sin(m_moveDirection * PI);

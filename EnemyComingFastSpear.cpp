@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyComingFastSpear.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemyComingFastSpear::CEnemyComingFastSpear()
 {
@@ -36,6 +37,9 @@ bool CEnemyComingFastSpear::Initialize()
 
 	m_Hp = 4;
 	m_AddScore = 12;
+
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemyComingFastSpear::Terminate()
@@ -48,6 +52,13 @@ void CEnemyComingFastSpear::Terminate()
 bool CEnemyComingFastSpear::Pulse()
 {
 	CEnemyBase::Pulse();
+
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_moveSpeed * cos(m_moveDirection * PI);
 	m_Point.y += g_pSystem->GetTimeStep() * m_moveSpeed * sin(m_moveDirection * PI);

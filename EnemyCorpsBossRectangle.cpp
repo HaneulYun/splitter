@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyCorpsBossRectangle.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemyCorpsBossRectangle::CEnemyCorpsBossRectangle()
 {
@@ -39,6 +40,8 @@ bool CEnemyCorpsBossRectangle::Initialize()
 	m_Hp = 20;
 	m_AddScore = 6;
 
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemyCorpsBossRectangle::Terminate()
@@ -51,6 +54,13 @@ void CEnemyCorpsBossRectangle::Terminate()
 bool CEnemyCorpsBossRectangle::Pulse()
 {
 	CEnemyBase::Pulse();
+
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
 
 	m_Point.x += g_pSystem->GetTimeStep() * m_moveSpeed * cos(m_moveDirection * PI);
 	m_Point.y += g_pSystem->GetTimeStep() * m_moveSpeed * sin(m_moveDirection * PI);
