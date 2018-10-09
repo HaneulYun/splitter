@@ -255,12 +255,6 @@
     <ClCompile Include="BulletSprinkle.cpp">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="BulletBumbeu.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletLaser.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -426,12 +420,6 @@
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="BulletSprinkle.h">
-      <Filter>소스 파일\ObjectClass\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletBumbeu.h">
-      <Filter>소스 파일\ObjectClass\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletLaser.h">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClInclude>
   </ItemGroup>

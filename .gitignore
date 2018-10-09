@@ -45,3 +45,5 @@
 *.vcxproj
 *.filters
 *.user
+/*.vcxproj
+/*.user
