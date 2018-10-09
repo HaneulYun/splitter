@@ -8,6 +8,8 @@
 
 #include "BulletGuided.h"
 
+#include "CSupporter.h"
+
 class CPlayer : public CBaseObject
 {
 	DWORD old;
@@ -16,8 +18,12 @@ class CPlayer : public CBaseObject
 	float m_rotateWhirlWind;
 	DWORD m_OldBulletTime;
 	CTimer m_TimerWhirlWind;
+	float m_normalSupporterDist;
+	float m_normalSupporterPos;
 
 public:
+	CSupporter m_supporter[5];
+
 	int m_gunType;
 	int m_gunLevel;
 

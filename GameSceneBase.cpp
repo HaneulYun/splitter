@@ -174,6 +174,8 @@ void CGameSceneBase::ApiRender(Matrix mat)
 	m_EffectManager->Render(mat);
 	m_EnemyManager->Render(mat);
 	m_BulletManager->Render(mat);
+	for (auto& v : m_Player->m_supporter)
+		v.Render(mat);
 	m_Player->Render(mat);
 
 	m_TextSCORE->Render(mat);
