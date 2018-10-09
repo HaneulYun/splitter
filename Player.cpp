@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "GameSceneBase.h"
 #include "ShellFX.h"
+#include "RedZoneFX.h"
 
 CPlayer::CPlayer()
 {
@@ -48,16 +49,12 @@ void CPlayer::Terminate()
 }
 bool CPlayer::Pulse()
 {
-	for (int i = 0; i < 2; ++i)
-	{
-		m_supporter[i].m_Point = { m_normalSupporterDist * cosf(PI * (m_normalSupporterPos + i)), m_normalSupporterDist * sinf(PI * (m_normalSupporterPos + i)) };
-		m_supporter[i].Pulse();
-	}
-	for (int i = 2; i < 5; ++i)
-	{
-		m_supporter[i].m_Point = {m_normalSupporterDist * 2 * cosf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))), m_normalSupporterDist * 2 * sinf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))) };
-		m_supporter[i].Pulse();
-	}
+	if(m_gunLevel == 6)
+		for (int i = 0; i < 2; ++i)
+		{
+			m_supporter[i].m_Point = { m_normalSupporterDist * cosf(PI * (m_normalSupporterPos + i)), m_normalSupporterDist * sinf(PI * (m_normalSupporterPos + i)) };
+			m_supporter[i].Pulse();
+		}
 	m_normalSupporterPos += 0.005;
 	if (g_pInputManager->m_MouseState.btn[0])
 	{
@@ -158,7 +155,17 @@ bool CPlayer::Pulse()
 			if (v->hitBox(m_hitRect))
 				if (v->hitPolyton(this, g_pGameScene->m_matWorld))
 					g_pGameScene->m_isGameOver = true;
-	if((g_pKeyCodeScan('q') || g_pKeyCodeScan('Q')) && !m_WhirlWind)
+	if ((g_pKeyCodeScan('q') || g_pKeyCodeScan('Q')))
+	{
+		for (int i = 0; i < 10; ++i)
+		{
+			float r = rand() % 200 / 100.f;
+			float d = rand() % 2000;
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CRedZoneFX({d * cosf(r * PI), d* sinf(r * PI)}, 6, 100, RGB(255, 0.f, 0.f)));
+
+		}
+	}
+	else if ((g_pKeyCodeScan('w') || g_pKeyCodeScan('W')) && !m_WhirlWind)
 	{
 		m_WhirlWind = true;
 		m_rotateWhirlWind = 0;
@@ -171,26 +178,37 @@ bool CPlayer::Pulse()
 				m_BulletWhirlWind.push_back(new CBulletStraight(m_rotateWhirlWind + 1.0 / 6 * j));
 		}
 	}
-	if (m_WhirlWind)
+	else if ((g_pKeyCodeScan('e') || g_pKeyCodeScan('E')) && !m_SuperSupporter)
 	{
-		if (m_TimerWhirlWind.IsValidTimer())
-		{
-			if (GetTickCount() - m_OldBulletTime > 40)
-			{
+		m_SuperSupporter = true;
+		m_TimerSuperSupporter.InitTimer(8000);
+	}
+	if (m_WhirlWind) {
+		if (m_TimerWhirlWind.IsValidTimer()) {
+			if (GetTickCount() - m_OldBulletTime > 40) {
 				m_OldBulletTime = GetTickCount();
-				for (int i = 0; i < 12; ++i)
-				{
+				for (int i = 0; i < 12; ++i) {
 					g_pGameScene->m_BulletManager->m_Bullet.push_back(m_BulletWhirlWind.front());
 					m_BulletWhirlWind.pop_front();
 				}
 				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
 			}
-			if (m_TimerWhirlWind.IsElapseTimer())
-			{
+			if (m_TimerWhirlWind.IsElapseTimer()) {
 				m_WhirlWind = false;
 				for (int i = 0; i < m_BulletWhirlWind.size(); ++i)
 					delete m_BulletWhirlWind[i];
 				m_BulletWhirlWind.clear();
+			}
+		}
+	}
+	if (m_SuperSupporter) {
+		if (m_TimerSuperSupporter.IsValidTimer()) {
+			for (int i = 2; i < 5; ++i) {
+				m_supporter[i].m_Point = { m_normalSupporterDist * 2 * cosf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))), m_normalSupporterDist * 2 * sinf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))) };
+				m_supporter[i].Pulse();
+			}
+			if (m_TimerSuperSupporter.IsElapseTimer()) {
+				m_SuperSupporter = false;
 			}
 		}
 	}

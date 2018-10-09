@@ -18,10 +18,13 @@ class CPlayer : public CBaseObject
 	float m_rotateWhirlWind;
 	DWORD m_OldBulletTime;
 	CTimer m_TimerWhirlWind;
+
+	CTimer m_TimerSuperSupporter;
 	float m_normalSupporterDist;
 	float m_normalSupporterPos;
 
 public:
+	bool m_SuperSupporter;
 	CSupporter m_supporter[5];
 
 	int m_gunType;

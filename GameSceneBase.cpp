@@ -189,8 +189,12 @@ void CGameSceneBase::ApiRender(Matrix mat)
 	m_EffectManager->Render(mat);
 	m_EnemyManager->Render(mat);
 	m_BulletManager->Render(mat);
-	for (auto& v : m_Player->m_supporter)
-		v.Render(mat);
+	for (int i = 0; i < 2; ++i)
+		if (m_Player->m_gunLevel == 6)
+			m_Player->m_supporter[i].Render(mat);
+	for(int i = 2; i < 5; ++i)
+		if (m_Player->m_SuperSupporter)
+			m_Player->m_supporter[i].Render(mat);
 	m_Player->Render(mat);
 
 	m_TextSCORE->Render(mat);
