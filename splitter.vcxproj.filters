@@ -259,13 +259,16 @@
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="BulletBomb.cpp">
-      <Filter>소스 파일\ObjectClass\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectLineFX.cpp">
-      <Filter>소스 파일\ObjectClass\Effect</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="RedLineFX.cpp">
-      <Filter>소스 파일\ObjectClass\Effect</Filter>
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectLineFX.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CSupporter.cpp">
+      <Filter>소스 파일\ObjectClass</Filter>
     </ClCompile>
     <ClCompile Include="RedZoneFX.cpp">
       <Filter>소스 파일</Filter>
@@ -441,13 +444,16 @@
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="BulletBomb.h">
-      <Filter>소스 파일\ObjectClass\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectLineFX.h">
-      <Filter>소스 파일\ObjectClass\Effect</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RedLineFX.h">
-      <Filter>소스 파일\ObjectClass\Effect</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectLineFX.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CSupporter.h">
+      <Filter>소스 파일\ObjectClass</Filter>
     </ClInclude>
     <ClInclude Include="RedZoneFX.h">
       <Filter>헤더 파일</Filter>

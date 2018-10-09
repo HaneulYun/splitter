@@ -73,51 +73,32 @@ bool CSupporter::Pulse()
 		if (GetTickCount() - old > 100)
 		{
 			old = GetTickCount();
-			for (int i = 0; i < m_gunLevel; ++i)
-			{
-				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletStraight(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1)));
-				g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
-			}
-			float t = m_rotate + 0.75 + rand() % 50 / 100.0;
-			//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
-			//g_pGameScene->SetShake(100, 1.5, m_rotate);
-			//g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletStraight(m_rotate));
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
 	case 2:
 		if (GetTickCount() - old > 125)
 		{
 			old = GetTickCount();
-			for (int i = 0; i < m_gunLevel; ++i)
-				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletReflection(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1), 1));
-			float t = m_rotate + 0.75 + rand() % 50 / 100.0;
-			//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
-			//g_pGameScene->SetShake(100, 1.5, m_rotate);
-			//g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletReflection(m_rotate, 1));
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
 	case 3:
 		if (GetTickCount() - old > 40)
 		{
 			old = GetTickCount();
-			for (int i = 0; i < m_gunLevel; ++i)
-				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletSprinkle(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1)));
-			float t = m_rotate + 0.75 + rand() % 50 / 100.0;
-			//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
-			//g_pGameScene->SetShake(100, 1.5, m_rotate);
-			//g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletSprinkle(m_rotate));
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
 	case 4:
 		if (GetTickCount() - old > 70)
 		{
 			old = GetTickCount();
-			for (int i = 0; i < m_gunLevel; ++i)
-				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletLaser(m_rotate - 0.075 + 0.15 / (m_gunLevel + 1) * (i + 1), 50));
-			float t = m_rotate + 0.75 + rand() % 50 / 100.0;
-			//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
-			//g_pGameScene->SetShake(100, 1.5, m_rotate);
-			//g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletLaser(m_rotate, 50));
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
 	case 6:
@@ -125,10 +106,7 @@ bool CSupporter::Pulse()
 		{
 			old = GetTickCount();
 			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletGuided(m_rotate));
-			float t = m_rotate + 0.75 + rand() % 50 / 100.0;
-			//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
-			//g_pGameScene->SetShake(100, 1.5, m_rotate);
-			//g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
 	}
