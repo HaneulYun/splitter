@@ -114,7 +114,7 @@ bool CPlayer::Pulse()
 				float t = m_rotate + 0.75 + rand() % 50 / 100.0;
 				//g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
 				g_pGameScene->SetShake(100, 1.5, m_rotate);
-				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 8);
 			}
 			break;
 		case 6:

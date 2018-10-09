@@ -30,7 +30,7 @@ void CSoundManager::Initialize()
 	m_BGMChannel->setVolume(0.5);
 	m_effectSoundChannel->setVolume(0.5);
 
-	vSound.resize(8);
+	vSound.resize(9);
 
 	soundSystem->createSound("resources/sound/11. Main Menu Theme.mp3", FMOD_LOOP_NORMAL, 0, &vSound[0]);
 	soundSystem->createSound("resources/sound/10. Reverse.mp3", FMOD_LOOP_NORMAL, 0, &vSound[1]);
@@ -40,6 +40,7 @@ void CSoundManager::Initialize()
 	soundSystem->createSound("resources/sound/bullet1.wav", FMOD_DEFAULT, 0, &vSound[5]);
 	soundSystem->createSound("resources/sound/break1.mp3", FMOD_DEFAULT, 0, &vSound[6]);
 	soundSystem->createSound("resources/sound/break2.mp3", FMOD_DEFAULT, 0, &vSound[7]);
+	soundSystem->createSound("resources/sound/laser .wav", FMOD_DEFAULT, 0, &vSound[8]);
 }
 void CSoundManager::Pulse()
 {

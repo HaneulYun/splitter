@@ -267,6 +267,9 @@
     <ClCompile Include="RedLineFX.cpp">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="RedZoneFX.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -445,6 +448,9 @@
     </ClInclude>
     <ClInclude Include="RedLineFX.h">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="RedZoneFX.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
