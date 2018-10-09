@@ -103,7 +103,7 @@ bool GameoverScene::Pulse()
 	m_Gameover->Pulse(str);
 	sprintf(str, "SCORE:         %d", g_pSystem->m_Score);
 	m_Score->Pulse(str);
-	sprintf(str, "BEST SCORE:    %d", g_pSystem->m_Score);
+	sprintf(str, "BEST SCORE:    %d", g_pSystem->m_BestSocre);
 	m_BestScore->Pulse(str);
 	sprintf(str, "EXIT");
 	m_Exit->Pulse(str);
@@ -117,7 +117,6 @@ bool GameoverScene::Pulse()
 		m_Exit->m_Color = RGB(0xff, 0xff, 0xff);
 		if (g_pInputManager->m_MouseState.btn[0])
 			g_pSystem->ChangeProcess(eProcessType_MenuScene);
-
 	}
 	else if (ratio(36 / 68, 30 / 40, 130, 100)) {
 		m_Retry->m_Color = RGB(0xff, 0xff, 0xff);

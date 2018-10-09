@@ -88,6 +88,7 @@ bool CGameSceneBase::Initialize()
 	m_skill3->Initialize("resources/image/skill3.jpg", -1500, 260, 1.0f);
 
 	m_Score = 0;
+	m_BestScore = 0;
 	return true;
 }
 
@@ -152,6 +153,7 @@ bool CGameSceneBase::Pulse()
 	if (m_isGameOver)
 	{
 		g_pSystem->m_Score = m_Score;
+		g_pSystem->m_BestSocre = m_BestScore;
 		g_pSystem->ChangeProcess(eProcessType_GameoverScene);
 	}
 	return true;
