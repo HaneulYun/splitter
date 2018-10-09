@@ -12,6 +12,7 @@ public:
 		eProcessType_MenuScene,
 		eProcessType_GameScene,
 		eProcessType_Stage01Scene,
+		eProcessType_CrazyScene,
 		eProcessType_GameoverScene,
 		eProcessType_OptionScene,
 		eProcessType_NILScene,

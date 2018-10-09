@@ -59,6 +59,10 @@ bool MenuScene::Initialize()
 	m_TextStage1->FontInitialize(20, "Delta Universe-Regular", 90, 0);
 	m_TextStage1->ObjectInitialize(WIDTH_NORMALIZE(330), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
+	m_TextCrazy = new CText;
+	m_TextCrazy->FontInitialize(20, "Delta Universe-Regular", 90, 0);
+	m_TextCrazy->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(480), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+
 	m_TextExit = new CText;
 	m_TextExit->FontInitialize(20, "Delta Universe-Regular", 90, 30);
 	m_TextExit->ObjectInitialize(WIDTH_NORMALIZE(780), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
@@ -90,6 +94,8 @@ bool MenuScene::Pulse()
 	m_TextEndless->Pulse(str);
 	sprintf(str, "Stage 1");
 	m_TextStage1->Pulse(str);
+	sprintf(str, "Crazy Mode");
+	m_TextCrazy->Pulse(str);
 	sprintf(str, "EXIT");
 	m_TextExit->Pulse(str);
 	sprintf(str, "OPTION");
@@ -127,6 +133,18 @@ bool MenuScene::Pulse()
 			g_pSystem->ChangeProcess(eProcessType_Stage01Scene);
 			return true;
 		}
+	}
+	else if (ratio(17 / 64, 27 / 40, 240, 100))
+	{
+		m_TextCrazy->m_Point.x = WIDTH_NORMALIZE(330);
+		m_TextCrazy->m_Color = RGB(0xff, 0xff, 0xff);
+		sprintf(str, "¢ºCrazy Mode");
+		m_TextCrazy->Pulse(str);
+			if (g_pInputManager->m_MouseState.btn[0]) {
+				g_pSoundManager->ChannelStop(g_pSoundManager->m_pChannel);
+				g_pSystem->ChangeProcess(eProcessType_CrazyScene);
+				return true;
+			}
 	}
 	else if (ratio(3 / 5, 15/28, 100, 75)) {
 		m_TextExit->m_Point.x = WIDTH_NORMALIZE(730);
@@ -166,6 +184,10 @@ bool MenuScene::Pulse()
 		m_TextStage1->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "Stage 1");
 		m_TextStage1->Pulse(str);
+		m_TextCrazy->m_Point.x = WIDTH_NORMALIZE(330);
+		m_TextCrazy->m_Color = RGB(0x88, 0x88, 0x88);
+		sprintf(str, "Crazy Mode");
+		m_TextCrazy->Pulse(str);
 		m_TextExit->m_Point.x = WIDTH_NORMALIZE(780);
 		m_TextExit->m_Color = RGB(0x88, 0x88, 0x88);
 		sprintf(str, "EXIT");
@@ -193,6 +215,7 @@ void MenuScene::ApiRender(Matrix mat)
 	m_TextSPLITTER->Render(mat);
 	m_TextEndless->Render(mat);
 	m_TextStage1->Render(mat);
+	m_TextCrazy->Render(mat);
 	m_TextExit->Render(mat);
 	m_Option->Render(mat);
 

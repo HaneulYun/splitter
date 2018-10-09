@@ -8,6 +8,7 @@
 #include "OptionScene.h"
 #include "GameoverScene.h"
 #include "NILScene.h"
+#include "CrazyScene.h"
 
 CWndSystem::CWndSystem()
 {
@@ -99,6 +100,10 @@ void CWndSystem::ChangeProcess(IProcess::eProcessType eType)
 		m_pCurProcess = new NILScene();
 		break;
 	
+	case IProcess::eProcessType_CrazyScene:
+		m_pCurProcess = new CrazyScene();
+		break;
+
 	case IProcess::eProcessType_Quit:
 		m_bIsActive = false;
 		PostMessage(m_hWnd, WM_CLOSE, 0, 0);

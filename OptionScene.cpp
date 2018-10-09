@@ -39,6 +39,8 @@ bool OptionScene::Initialize()
 		+(LONG)(m_matWorld.m32 / m_matWorld.m22)
 	};
 
+	
+
 	m_SouudFX = new CText;
 	m_SouudFX->FontInitialize(30, "Delta Universe-Regular", 50, 0);
 	m_SouudFX->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(80), RGB(0xaa, 0xaa, 0xaa), RGB(0x00, 0x00, 0x00), 1);
@@ -73,6 +75,7 @@ bool OptionScene::Initialize()
 
 	m_ScreenShakeBar.Initialize(-850, 600, RGB(0x77, 0x77, 0x77), CButtonObject::eButtonType_scroll);
 	//m_ScreenShakeButton.Initialize(-850, 600, RGB(0xff, 0xff, 0xff), CButtonObject::eButtonType_button);
+
 
 	ScreenRatio = g_pSystem->m_abc;
 	m_barScreen = new CText;

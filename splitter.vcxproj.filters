@@ -88,6 +88,9 @@
     <Filter Include="소스 파일\ObjectClass\Enemy\01">
       <UniqueIdentifier>{1d7f5255-c546-4e82-9fc4-cbc7b940497c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Scene\CrazyScene">
+      <UniqueIdentifier>{64599c8e-030b-4798-9a7e-1ab232c606c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winMain.cpp">
@@ -240,14 +243,17 @@
     <ClCompile Include="EnemySwirlingPentagon.cpp">
       <Filter>소스 파일\ObjectClass\Enemy\01</Filter>
     </ClCompile>
-    <ClCompile Include="BulletReflection.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletSprinkle.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="CrazyScene.cpp">
+      <Filter>소스 파일\Scene\CrazyScene</Filter>
     </ClCompile>
     <ClCompile Include="BulletGuided.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletReflection.cpp">
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletSprinkle.cpp">
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -404,14 +410,17 @@
     <ClInclude Include="EnemyCorpsBossRectangle.h">
       <Filter>소스 파일\ObjectClass\Enemy\01</Filter>
     </ClInclude>
-    <ClInclude Include="BulletReflection.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletSprinkle.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CrazyScene.h">
+      <Filter>소스 파일\Scene\CrazyScene</Filter>
     </ClInclude>
     <ClInclude Include="BulletGuided.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletReflection.h">
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletSprinkle.h">
+      <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

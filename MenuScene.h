@@ -12,7 +12,7 @@ public:
 	CText* m_TextSPLITTER;
 	CText* m_TextEndless;
 	CText* m_TextStage1;
-	CText* m_TextStage2;
+	CText* m_TextCrazy;
 	CText* m_TextStage3;
 	CText* m_TextExit;
 	CText* m_Option;
