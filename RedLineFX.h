@@ -1,7 +1,7 @@
 #pragma once
 #include "VFXBase.h"
 
-class CRedLine : public CVFXBase
+class CRedLineFX : public CVFXBase
 {
 	POINT* m_TargetPolygon;
 
@@ -10,8 +10,8 @@ class CRedLine : public CVFXBase
 	float m_OuterRatio;
 	CTimer m_Timer;
 public:
-	CRedLine(Vector pt, int polyAngle, float distance, COLORREF color);
-	~CRedLine();
+	CRedLineFX(Vector pt, int polyAngle, float distance, COLORREF color);
+	~CRedLineFX();
 
 	virtual bool Initialize() override;
 	virtual void Terminate() override;

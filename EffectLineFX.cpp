@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "RedLine.h"
+#include "EffectLineFX.h"
 #include "WndSystem.h"
 
 
-CRedLine::CRedLine(Vector pt, int polyAngle, float distance, COLORREF color)
+CEffectLineFX::CEffectLineFX(Vector pt, int polyAngle, float distance, COLORREF color)
 {
 	m_eRenderType = eRenderType_Polygon;
 	m_Color = color;
@@ -31,20 +31,19 @@ CRedLine::CRedLine(Vector pt, int polyAngle, float distance, COLORREF color)
 }
 
 
-CRedLine::~CRedLine()
+CEffectLineFX::~CEffectLineFX()
 {
-
 }
 
-bool CRedLine::Initialize()
+bool CEffectLineFX::Initialize()
 {
 	return false;
 }
-void CRedLine::Terminate()
+void CEffectLineFX::Terminate()
 {
 
 }
-bool CRedLine::Pulse()
+bool CEffectLineFX::Pulse()
 {
 	if (m_Timer.IsValidTimer())
 	{

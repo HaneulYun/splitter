@@ -261,11 +261,11 @@
     <ClCompile Include="BulletBomb.cpp">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="EffectLine.cpp">
+    <ClCompile Include="EffectLineFX.cpp">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="RedLine.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="RedLineFX.cpp">
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -440,11 +440,11 @@
     <ClInclude Include="BulletBomb.h">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="EffectLine.h">
+    <ClInclude Include="EffectLineFX.h">
       <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="RedLine.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="RedLineFX.h">
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

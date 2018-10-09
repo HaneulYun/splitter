@@ -1,7 +1,7 @@
 #pragma once
 #include "VFXBase.h"
 
-class CEffectLine : public CVFXBase
+class CEffectLineFX : public CVFXBase
 {
 	POINT* m_TargetPolygon;
 
@@ -10,8 +10,8 @@ class CEffectLine : public CVFXBase
 	float m_OuterRatio;
 	CTimer m_Timer;
 public:
-	CEffectLine(Vector pt, int polyAngle, float distance, COLORREF color);
-	~CEffectLine();
+	CEffectLineFX(Vector pt, int polyAngle, float distance, COLORREF color);
+	~CEffectLineFX();
 
 	virtual bool Initialize() override;
 	virtual void Terminate() override;
