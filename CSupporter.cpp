@@ -101,6 +101,14 @@ bool CSupporter::Pulse()
 			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
 		}
 		break;
+	case 5:
+		if (GetTickCount() - old > 200)
+		{
+			old = GetTickCount();
+			g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletBomb(m_rotate, 5));
+			g_pGameScene->m_BulletManager->m_Bullet.back()->m_Point = m_Point;
+		}
+		break;
 	case 6:
 		if (GetTickCount() - old > 70 + (6 - m_gunLevel) * 30)
 		{

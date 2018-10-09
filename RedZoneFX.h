@@ -3,11 +3,7 @@
 
 class CRedZoneFX : public CVFXBase
 {
-	POINT* m_TargetPolygon;
-
 	float m_Distance;
-	float m_InnerRatio;
-	float m_OuterRatio;
 	CTimer m_Timer;
 public:
 	CRedZoneFX(Vector pt, int polyAngle, float distance, COLORREF color);

@@ -3,23 +3,22 @@
 #include "WndSystem.h"
 #include "GameSceneBase.h"
 
-
-CBulletbomb::CBulletbomb(float direction, int hp)
+CBulletBomb::CBulletBomb(float direction, float damage)
 {
 	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
-	m_speed = 4000;
-	m_hp = hp;
+	m_speed = 2000;
+	m_damage = damage;
 
 	Initialize();
 }
 
 
-CBulletbomb::~CBulletbomb()
+CBulletBomb::~CBulletBomb()
 {
 	Terminate();
 }
 
-bool CBulletbomb::Initialize()
+bool CBulletBomb::Initialize()
 {
 	m_eRenderType = eRenderType_Polygon;
 	m_Color = RGB(0xff, 0xff, 0xff);
@@ -29,23 +28,27 @@ bool CBulletbomb::Initialize()
 	m_scale = 1.0;
 
 
-	m_NumPolygon = 4;
+	m_NumPolygon = 8;
 	m_Polygon = new POINT[m_NumPolygon];
 	{
-		m_Polygon[0] = { -8, -8 };
-		m_Polygon[1] = { -8,  8 };
-		m_Polygon[2] = { 8,  8 };
-		m_Polygon[3] = { 8, -8 };
+		m_Polygon[0] = { 10, 6 };
+		m_Polygon[1] = { 60, 6 };
+		m_Polygon[2] = { 10, 15 };
+		m_Polygon[3] = { -40, 6 };
+		m_Polygon[4] = { -40, -6 };
+		m_Polygon[5] = { 10, -15 };
+		m_Polygon[6] = { 60, -6 };
+		m_Polygon[7] = { 10, -6 };
 	}
 
 	return true;
 }
-void CBulletbomb::Terminate()
+void CBulletBomb::Terminate()
 {
 	if (m_activeState)
 		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
-bool CBulletbomb::Pulse()
+bool CBulletBomb::Pulse()
 {
 	if (!m_activeState) m_activeState = true;
 

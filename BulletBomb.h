@@ -1,12 +1,12 @@
 #pragma once
 #include "BulletBase.h"
 
-class CBulletbomb : public CBulletBase
+class CBulletBomb : public CBulletBase
 {
 	int m_cnt;
 public:
-	CBulletbomb(float direction, int hp);
-	~CBulletbomb();
+	CBulletBomb(float direction, float damage);
+	~CBulletBomb();
 
 	virtual bool Initialize() override;
 	virtual void Terminate() override;

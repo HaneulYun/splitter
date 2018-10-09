@@ -36,6 +36,8 @@ bool CPlayer::Initialize()
 	}
 
 	m_WhirlWind = false;
+	m_SuperSupporter = false;
+	m_RedZone = false;
 	m_gunType = 1;
 	m_gunLevel = 1;
 
@@ -114,6 +116,17 @@ bool CPlayer::Pulse()
 				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 8);
 			}
 			break;
+		case 5:
+			if (GetTickCount() - old > 200)
+			{
+				old = GetTickCount();
+				g_pGameScene->m_BulletManager->m_Bullet.push_back(new CBulletBomb(m_rotate, 20));
+				float t = m_rotate + 0.75 + rand() % 50 / 100.0;
+				g_pGameScene->m_EffectManager->m_VFX.push_back(new CShellFX(m_Point, m_Color, rand() % 3000 + 2000, t));
+				g_pGameScene->SetShake(100, 1.5, m_rotate);
+				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
+			}
+			break;
 		case 6:
 			if (GetTickCount() - old > 70 + (6 - m_gunLevel) * 30)
 			{
@@ -155,14 +168,15 @@ bool CPlayer::Pulse()
 			if (v->hitBox(m_hitRect))
 				if (v->hitPolyton(this, g_pGameScene->m_matWorld))
 					g_pGameScene->m_isGameOver = true;
-	if ((g_pKeyCodeScan('q') || g_pKeyCodeScan('Q')))
+	if ((g_pKeyCodeScan('q') || g_pKeyCodeScan('Q')) && !m_RedZone)
 	{
+		m_RedZone = true;
+		m_TimerRedZone.InitTimer(6000);
 		for (int i = 0; i < 10; ++i)
 		{
 			float r = rand() % 200 / 100.f;
-			float d = rand() % 2000;
-			g_pGameScene->m_EffectManager->m_VFX.push_back(new CRedZoneFX({d * cosf(r * PI), d* sinf(r * PI)}, 6, 100, RGB(255, 0.f, 0.f)));
-
+			float d = 400 + rand() % 600;
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CRedZoneFX({d * cosf(r * PI), d* sinf(r * PI)}, 6, 250, RGB(255, 0.f, 0.f)));
 		}
 	}
 	else if ((g_pKeyCodeScan('w') || g_pKeyCodeScan('W')) && !m_WhirlWind)
@@ -212,6 +226,10 @@ bool CPlayer::Pulse()
 			}
 		}
 	}
+	if (m_RedZone)
+		if (m_TimerRedZone.IsValidTimer())
+			if (m_TimerRedZone.IsElapseTimer())
+				m_RedZone = false;
 	if (g_pKeyCodeScan('1'))
 		m_gunType = 1;
 	else if (g_pKeyCodeScan('2'))

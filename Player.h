@@ -5,7 +5,7 @@
 #include "BulletReflection.h"
 #include "BulletSprinkle.h"
 #include "BulletLaser.h"
-
+#include "BulletBomb.h"
 #include "BulletGuided.h"
 
 #include "CSupporter.h"
@@ -22,6 +22,9 @@ class CPlayer : public CBaseObject
 	CTimer m_TimerSuperSupporter;
 	float m_normalSupporterDist;
 	float m_normalSupporterPos;
+
+	bool m_RedZone;
+	CTimer m_TimerRedZone;
 
 public:
 	bool m_SuperSupporter;
