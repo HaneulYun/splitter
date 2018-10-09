@@ -113,12 +113,12 @@ bool GameoverScene::Pulse()
 	mouseX = g_pInputManager->m_MouseState.x;
 	mouseY = g_pInputManager->m_MouseState.y;
 
-	if (500 < mouseX && mouseX < 600 && 550 < mouseY && mouseY < 600) {
+	if (ratio(26 / 68, 30/ 40, 100, 100)) {
 		m_Exit->m_Color = RGB(0xff, 0xff, 0xff);
 		if (g_pInputManager->m_MouseState.btn[0])
 			g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	}
-	else if (680 < mouseX && mouseX < 820 && 550 < mouseY && mouseY < 650) {
+	else if (ratio(36 / 68, 30 / 40, 130, 100)) {
 		m_Retry->m_Color = RGB(0xff, 0xff, 0xff);
 		if (g_pInputManager->m_MouseState.btn[0])
 			g_pSystem->ChangeProcess(eProcessType_GameScene);
