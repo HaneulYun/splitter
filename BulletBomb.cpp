@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "BulletBumbeu.h"
+#include "Bulletbomb.h"
 #include "WndSystem.h"
 #include "GameSceneBase.h"
 
 
-BulletBumbeu::BulletBumbeu(float direction, int hp)
+Bulletbomb::Bulletbomb(float direction, int hp)
 {
 	m_direction = direction + (rand() % 100 / 5000.0) - 0.01;
 	m_speed = 4000;
@@ -14,12 +14,12 @@ BulletBumbeu::BulletBumbeu(float direction, int hp)
 }
 
 
-BulletBumbeu::~BulletBumbeu()
+Bulletbomb::~Bulletbomb()
 {
 	Terminate();
 }
 
-bool BulletBumbeu::Initialize()
+bool Bulletbomb::Initialize()
 {
 	m_eRenderType = eRenderType_Polygon;
 	m_Color = RGB(0xff, 0xff, 0xff);
@@ -40,12 +40,12 @@ bool BulletBumbeu::Initialize()
 
 	return true;
 }
-void BulletBumbeu::Terminate()
+void Bulletbomb::Terminate()
 {
 	if (m_activeState)
 		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
-bool BulletBumbeu::Pulse()
+bool Bulletbomb::Pulse()
 {
 	if (!m_activeState) m_activeState = true;
 
