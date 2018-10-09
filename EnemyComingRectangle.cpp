@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EnemyComingRectangle.h"
 #include "GameSceneBase.h"
+#include "AfterimageFX.h"
 
 CEnemyComingRectangle::CEnemyComingRectangle()
 {
@@ -38,6 +39,8 @@ bool CEnemyComingRectangle::Initialize()
 
 	state = 0;
 
+	m_timerAfterEffect.InitTimer(50);
+
 	return true;
 }
 void CEnemyComingRectangle::Terminate()
@@ -49,7 +52,12 @@ void CEnemyComingRectangle::Terminate()
 }
 bool CEnemyComingRectangle::Pulse()
 {
-	CEnemyBase::Pulse();
+	if (m_timerAfterEffect.IsElapseTimer()) {
+		if (!m_timerAfterEffect.IsValidTimer()) {
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CAfterimageFX(this, m_Color, 300));
+			m_timerAfterEffect.InitTimer(50);
+		}
+	}
 
 	m_moveSpeed += g_pSystem->GetTimeStep() * (!state ? 1200 : -800);
 	if (m_moveSpeed > 400)

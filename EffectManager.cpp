@@ -24,7 +24,7 @@ void CEffectManager::Terminate()
 }
 bool CEffectManager::Pulse()
 {
-	for (int i = 0; i < m_VFX.size(); ++i)
+	for (int i = m_VFX.size() - 1; i >= 0; --i)
 		if (m_VFX[i]->Pulse())
 		{
 			delete m_VFX[i];

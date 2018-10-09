@@ -125,10 +125,10 @@ bool CGameSceneBase::Pulse()
 	m_matWorld.m31 += actual.x;
 	m_matWorld.m32 += actual.y;
 
+	m_EffectManager->Pulse();
 	m_Player->Pulse();
 	m_BulletManager->Pulse();
 	m_EnemyManager->Pulse();
-	m_EffectManager->Pulse();
 
 
 	char str[20];
