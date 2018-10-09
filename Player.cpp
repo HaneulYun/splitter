@@ -6,6 +6,8 @@
 CPlayer::CPlayer()
 {
 	Initialize();
+	for (auto& v : m_supporter)
+		v.Initialize();
 }
 
 CPlayer::~CPlayer()
@@ -35,6 +37,9 @@ bool CPlayer::Initialize()
 	m_WhirlWind = false;
 	m_gunType = 1;
 	m_gunLevel = 1;
+
+	m_normalSupporterDist = 200;
+	m_normalSupporterPos = 0.0;
 	return true;
 }
 void CPlayer::Terminate()
@@ -43,6 +48,17 @@ void CPlayer::Terminate()
 }
 bool CPlayer::Pulse()
 {
+	for (int i = 0; i < 2; ++i)
+	{
+		m_supporter[i].m_Point = { m_normalSupporterDist * cosf(PI * (m_normalSupporterPos + i)), m_normalSupporterDist * sinf(PI * (m_normalSupporterPos + i)) };
+		m_supporter[i].Pulse();
+	}
+	for (int i = 2; i < 5; ++i)
+	{
+		m_supporter[i].m_Point = {m_normalSupporterDist * 2 * cosf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))), m_normalSupporterDist * 2 * sinf(PI * (-m_normalSupporterPos * 0.4 + (i / 3.f * 2))) };
+		m_supporter[i].Pulse();
+	}
+	m_normalSupporterPos += 0.005;
 	if (g_pInputManager->m_MouseState.btn[0])
 	{
 		POINT mousePt;
