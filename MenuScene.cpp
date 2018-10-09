@@ -43,6 +43,7 @@ bool MenuScene::Initialize()
 		+(LONG)(m_matWorld.m32 / m_matWorld.m22)
 	};
 	
+
 	m_TextSPLITTER = new CText;
 	m_TextSPLITTER->FontInitialize(20, "Delta Universe-Regular", 150, 0);
 	m_TextSPLITTER->ObjectInitialize(WIDTH_NORMALIZE(500), HEIGHT_NORMALIZE(100), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
@@ -53,15 +54,15 @@ bool MenuScene::Initialize()
 
 	m_TextEndless = new CText;
 	m_TextEndless->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextEndless->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(280), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextEndless->ObjectInitialize(WIDTH_NORMALIZE(270), HEIGHT_NORMALIZE(280), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextStage1 = new CText;
 	m_TextStage1->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextStage1->ObjectInitialize(WIDTH_NORMALIZE(330), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextStage1->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(380), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextCrazy = new CText;
 	m_TextCrazy->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextCrazy->ObjectInitialize(WIDTH_NORMALIZE(300), HEIGHT_NORMALIZE(480), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
+	m_TextCrazy->ObjectInitialize(WIDTH_NORMALIZE(270), HEIGHT_NORMALIZE(480), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextExit = new CText;
 	m_TextExit->FontInitialize(20, "Delta Universe-Regular", 90, 30);
@@ -109,10 +110,10 @@ bool MenuScene::Pulse()
 	RECT mouseRect{ mousePoint.x, mousePoint.y, mousePoint.x, mousePoint.y};
 
 	
-	if(ratioNil(300, 250, 240,165)){
+	if(ratioNil(300, 250, 240, 85)){
 	//if (ratio(1/4,2/5,200,50)) {
 	//if (m_TextEndless->hitBox(mouseRect)) {
-		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(270);
+		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(250);
 		m_TextEndless->m_Point.y = HEIGHT_NORMALIZE(250);
 		m_TextEndless->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºEndless Mode");
@@ -123,8 +124,8 @@ bool MenuScene::Pulse()
 			return true;
 		}
 	}
-	else if (ratio(17 / 64, 11/20, 125, 70)) {
-		m_TextStage1->m_Point.x = WIDTH_NORMALIZE(300);
+	else if ((ratioNil(300, 390, 150, 85))) {
+		m_TextStage1->m_Point.x = WIDTH_NORMALIZE(270);
 		m_TextStage1->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºStage 1");
 		m_TextStage1->Pulse(str);
@@ -134,9 +135,9 @@ bool MenuScene::Pulse()
 			return true;
 		}
 	}
-	else if (ratio(17 / 64, 27 / 40, 240, 100))
+	else if (ratioNil(270, 480, 240, 85))
 	{
-		m_TextCrazy->m_Point.x = WIDTH_NORMALIZE(330);
+		m_TextCrazy->m_Point.x = WIDTH_NORMALIZE(250);
 		m_TextCrazy->m_Color = RGB(0xff, 0xff, 0xff);
 		sprintf(str, "¢ºCrazy Mode");
 		m_TextCrazy->Pulse(str);

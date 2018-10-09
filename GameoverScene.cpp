@@ -117,6 +117,7 @@ bool GameoverScene::Pulse()
 		m_Exit->m_Color = RGB(0xff, 0xff, 0xff);
 		if (g_pInputManager->m_MouseState.btn[0])
 			g_pSystem->ChangeProcess(eProcessType_MenuScene);
+
 	}
 	else if (ratio(36 / 68, 30 / 40, 130, 100)) {
 		m_Retry->m_Color = RGB(0xff, 0xff, 0xff);

@@ -23,7 +23,6 @@ public:
 
 	float mouseX, mouseY;
 	POINT mousePt;
-
 public:
 	MenuScene();
 	~MenuScene();
