@@ -261,6 +261,9 @@
     <ClCompile Include="BulletBomb.cpp">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="EffectLine.cpp">
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -433,6 +436,9 @@
     </ClInclude>
     <ClInclude Include="BulletBomb.h">
       <Filter>소스 파일\ObjectClass\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectLine.h">
+      <Filter>소스 파일\ObjectClass\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
