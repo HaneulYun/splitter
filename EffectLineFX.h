@@ -10,7 +10,7 @@ class CEffectLineFX : public CVFXBase
 	float m_OuterRatio;
 	CTimer m_Timer;
 public:
-	CEffectLineFX(Vector pt, int polyAngle, float distance, COLORREF color);
+	CEffectLineFX(Vector pt, float distance, COLORREF color);
 	~CEffectLineFX();
 
 	virtual bool Initialize() override;

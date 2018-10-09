@@ -6,6 +6,8 @@
 #include "EnemyRotatingTwoTriangleUp.h"
 #include "EnemyRotatingTriangleHavingShield.h"
 
+#include "EnemySwirlingPentagon.h"
+
 Stage01Scene::Stage01Scene()
 {
 	g_pSoundManager->Pulse(m_pChannel, 2);
@@ -14,6 +16,7 @@ Stage01Scene::Stage01Scene()
 	m_spawnE0103 = 150;
 	m_spawnE0105 = 200;
 	m_spawnE0106 = 350;
+	m_spawnE0107 = 0;
 	m_spawnE0107 = 450;
 	m_spawnE0108 = 450;
 	m_spawnE0110 = 600;
@@ -53,11 +56,11 @@ bool Stage01Scene::Pulse()
 	//	m_EnemyManager->m_Enemy.push_back(new CEnemyComingFastSpear());
 	//	m_spawnE0106 += 90;
 	//}
-	//if (m_Score > m_spawnE0107)
-	//{
-	//	m_EnemyManager->m_Enemy.push_back(new CEnemySwirlingPentagon());
-	//	m_spawnE0107 += 90;
-	//}
+	if (m_Score > m_spawnE0107)
+	{
+		m_EnemyManager->m_Enemy.push_back(new CEnemySwirlingPentagon());
+		m_spawnE0107 += 90;
+	}
 	//if (m_Score > m_spawnE0108)
 	//{
 	//	m_EnemyManager->m_Enemy.push_back(new CEnemyCorpsBossRectangle());

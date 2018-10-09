@@ -4,6 +4,8 @@
 #include "GameSceneBase.h"
 #include "AfterimageFX.h"
 
+#include "EffectLineFX.h"
+
 CEnemyRotatingTriangleHavingShield::CEnemyRotatingTriangleHavingShield()
 {
 	m_moveSpeed = 0.0f;
@@ -66,6 +68,7 @@ void CEnemyRotatingTriangleHavingShield::Terminate()
 	g_pGameScene->SetShake(150, 15, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 600, 15, m_Color));
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, m_NumPolygon * 2, 600, m_Color));
+	g_pGameScene->m_EffectManager->m_VFX.push_back(new CEffectLineFX(m_Point, 450, m_Color));
 }
 bool CEnemyRotatingTriangleHavingShield::Pulse()
 {
