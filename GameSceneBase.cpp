@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "GameSceneBase.h"
 
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2+m_worldRect.right*(x/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+
 CGameSceneBase::CGameSceneBase()
 {
 	m_Player = NULL;
@@ -48,7 +51,7 @@ bool CGameSceneBase::Initialize()
 
 	m_TextSCORE = new CText();
 	m_TextSCORE->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextSCORE->ObjectInitialize(g_pWindow->m_clientSize.cx / 2, 10, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_TextSCORE->ObjectInitialize(WIDTH_NORMALIZE(g_pWindow->m_clientSize.cx/ 2), HEIGHT_NORMALIZE(80), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextFPS = new CText();
 	m_TextFPS->FontInitialize(20, "±¼¸²", 20, 0);
@@ -157,8 +160,8 @@ bool CGameSceneBase::Pulse()
 	sprintf(str, "WAV : %4d", cnt);
 	m_TextWAV->Pulse(str);
 
-	//if ((g_pKeyCodeScan('m') || g_pKeyCodeScan('M')))
-	//	g_pSystem->ChangeProcess(eProcessType_MenuScene);
+	if ((g_pKeyCodeScan('m') || g_pKeyCodeScan('M')))
+		g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	if (m_isGameOver)
 	{
 		if (m_Score > m_BestScore)

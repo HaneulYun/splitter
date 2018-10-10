@@ -126,6 +126,7 @@ bool CPlayer::Pulse()
 				g_pGameScene->SetShake(100, 1.5, m_rotate);
 				g_pSoundManager->Pulse(g_pGameScene->m_BulletManager->m_Bullet.back()->m_pChannel, 5);
 			}
+
 			break;
 		case 6:
 			if (GetTickCount() - old > 70 + (6 - m_gunLevel) * 30)

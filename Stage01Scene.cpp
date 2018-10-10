@@ -17,10 +17,10 @@ Stage01Scene::Stage01Scene()
 	m_spawnE0102 = 100;
 	m_spawnE0103 = 150;
 	m_spawnE0105 = 200;
-	m_spawnE0106 = 0;
-	//m_spawnE0106 = 350;
-	m_spawnE0107 = 0;
-	//m_spawnE0107 = 450;
+	//m_spawnE0106 = 0;
+	m_spawnE0106 = 350;
+	//m_spawnE0107 = 0;
+	m_spawnE0107 = 450;
 	m_spawnE0108 = 450;
 	m_spawnE0110 = 600;
 }

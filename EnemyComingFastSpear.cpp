@@ -33,7 +33,7 @@ bool CEnemyComingFastSpear::Initialize()
 	m_rotate = 0.0f;
 	m_scale = 1.0f;
 
-	m_moveSpeed = 2500;
+	m_moveSpeed = 4000;
 	m_rotate = m_moveDirection = atan2(-m_Point.y, -m_Point.x) / PI;
 
 	m_Hp = 4;

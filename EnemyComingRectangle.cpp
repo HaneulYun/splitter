@@ -45,7 +45,7 @@ bool CEnemyComingRectangle::Initialize()
 }
 void CEnemyComingRectangle::Terminate()
 {
-	g_pSoundManager->Pulse(m_pChannel, 7);
+	g_pSoundManager->Pulse(m_pChannel, 6);
 	g_pGameScene->SetShake(100, 5, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 200, 6, m_Color));
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, m_NumPolygon, 200, m_Color));
