@@ -4,6 +4,8 @@
 class CEnemySwirlingPentagon : public CEnemyBase
 {
 public:
+	float m_rotatingMoveSpeed;
+
 	float m_moveSpeed;
 	float m_rotateSpeed;
 	float m_moveDirection;

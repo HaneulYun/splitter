@@ -1,28 +1,32 @@
 #include "stdafx.h"
 #include "RedLineFX.h"
 #include "WndSystem.h"
+#include "GameSceneBase.h"
+#include "EnemyComingFastSpear.h"
 
-
-CRedLineFX::CRedLineFX(Vector pt, int polyAngle, float distance, COLORREF color)
+CRedLineFX::CRedLineFX()
 {
 	m_eRenderType = eRenderType_Polygon;
-	m_Color = color;
+	m_Color = RGB(0xff, 0x00, 0x00);
 
-	m_Distance = distance;
-	m_NumPolygon = (polyAngle + 1) * 2;
+	
+	m_NumPolygon = 4;
 	m_Polygon = new POINT[m_NumPolygon];
 	m_TargetPolygon = new POINT[m_NumPolygon];
-	for (int i = 0; i < polyAngle + 1; ++i)
 	{
-		m_Polygon[i] = { 0, 0 };
-		m_Polygon[polyAngle + 1 + i] = { 0, 0 };
-		m_TargetPolygon[i] = { LONG(m_Distance * cos(PI * 2 / polyAngle * i)), LONG(m_Distance * sin(PI * 2 / polyAngle * i)) };
-		m_TargetPolygon[polyAngle + 1 + i] = { LONG(m_Distance * cos(PI * 2 / polyAngle * (polyAngle - i))), LONG(m_Distance * sin(PI * 2 / polyAngle * (polyAngle - i))) };
+		m_TargetPolygon[0] = m_Polygon[0] = { LONG(0), LONG(-80) };
+		m_TargetPolygon[1] = m_Polygon[1] = { LONG(0), LONG(80) };
+		m_TargetPolygon[2] = m_Polygon[2] = { LONG(4000), LONG(80) };
+		m_TargetPolygon[3] = m_Polygon[3] = { LONG(4000), LONG(-80) };
 	}
 
+	m_createRotate = rand() % 200 / 100.0;
+	float radius = sqrt(pow(g_pGameScene->m_worldRect.right, 2) + pow(g_pGameScene->m_worldRect.bottom, 2));
+	m_createPoint = { float(radius * cos(m_createRotate*PI)), float(radius * sin(m_createRotate*PI)) };
+	m_Point = { 0, 0 };
+
 	m_scale = 1.0f;
-	m_Point = pt;
-	m_rotate = rand() % 200 / 100.0;
+	m_rotate = m_createRotate ;
 
 	m_InnerRatio = 0.0f;
 	m_OuterRatio = 0.0f;
@@ -33,7 +37,7 @@ CRedLineFX::CRedLineFX(Vector pt, int polyAngle, float distance, COLORREF color)
 
 CRedLineFX::~CRedLineFX()
 {
-
+	g_pGameScene->m_EnemyManager->m_Enemy.push_back(new CEnemyComingFastSpear(m_createPoint));
 }
 
 bool CRedLineFX::Initialize()
@@ -42,20 +46,18 @@ bool CRedLineFX::Initialize()
 }
 void CRedLineFX::Terminate()
 {
-
 }
 bool CRedLineFX::Pulse()
 {
 	if (m_Timer.IsValidTimer())
 	{
 		float ratio = 1.0 / 400 * (GetTickCount() - m_Timer.m_dwOldTime);
-		float rInner = sin(ratio * PI / 2);
-		float rOuter = sin(PI * (1.5 + ratio / 2)) + 1;
+		float rInner = 1 - sin(ratio * PI / 2);
+		//float rOuter = sin(PI * (1.5 + ratio / 2)) + 1;
 		//float rOuter = ratio;
-		for (int i = 0; i < m_NumPolygon / 2; ++i)
+		for (int i = 0; i < m_NumPolygon; ++i)
 		{
-			m_Polygon[i] = { LONG(m_TargetPolygon[i].x * rInner), LONG(m_TargetPolygon[i].y * rInner) };
-			m_Polygon[m_NumPolygon / 2 + i] = { LONG(m_TargetPolygon[i].x * rOuter), LONG(m_TargetPolygon[i].y * rOuter) };
+			m_Polygon[i] = { LONG(m_TargetPolygon[i].x * 1.f), LONG(m_TargetPolygon[i].y * rInner) };
 		}
 		if (m_Timer.IsElapseTimer())
 		{

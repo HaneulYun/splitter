@@ -53,7 +53,7 @@ bool IntroScene::Initialize()
 	
 	m_people1 = new CText;
 	m_people1->FontInitialize(100, "고딕", 40, 0);
-	m_people1->ObjectInitialize(WIDTH_NORMALIZE(100), HEIGHT_NORMALIZE(400), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
+	m_people1->ObjectInitialize(WIDTH_NORMALIZE(80), HEIGHT_NORMALIZE(400), RGB(160, 250, 255), RGB(0x00, 0x00, 0x00), 1);
 
 	initSound = 0;
 	return true;
@@ -93,7 +93,7 @@ bool IntroScene::Pulse()
 	m_jang->Pulse(str);
 	sprintf(str, "이 게임을 만드는데 도움을 주신분들");
 	m_people->Pulse(str);
-	sprintf(str, "윤정훈 남주영 이예은 최아도 최홍일 이상기 송주희 송인희");
+	sprintf(str, "윤정훈 남주영 이예은 최아도 최홍일 이상기 송주희 송인희 김민주");
 	m_people1->Pulse(str);
 
 	if (g_pSystem->m_pSoundManager == nullptr && initSound)

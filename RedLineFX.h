@@ -9,8 +9,11 @@ class CRedLineFX : public CVFXBase
 	float m_InnerRatio;
 	float m_OuterRatio;
 	CTimer m_Timer;
+
+	Vector m_createPoint;
+	float m_createRotate;
 public:
-	CRedLineFX(Vector pt, int polyAngle, float distance, COLORREF color);
+	CRedLineFX();
 	~CRedLineFX();
 
 	virtual bool Initialize() override;

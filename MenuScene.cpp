@@ -72,8 +72,8 @@ bool MenuScene::Initialize()
 	m_Option->FontInitialize(20, "Delta Universe-Regular", 90, 30);
 	m_Option->ObjectInitialize(WIDTH_NORMALIZE(750), HEIGHT_NORMALIZE(280), RGB(0x88, 0x88, 0x88), RGB(0x00, 0x00, 0x00), 1);
 	
-	m_Nil.Initialize("resources/image/ÇÏ´Ã1.jpg", -800, -650, 1.5f);
-	m_JJang.Initialize("resources/image/¼öÇö1.jpg", 700, -600, 1.5f);
+	m_Nil.Initialize("resources/image/ÇÏ´Ã1.jpg", -810, -630, 1.5f);
+	m_JJang.Initialize("resources/image/¼öÇö1.jpg", 750, -600, 1.5f);
 	return true;
 }
 
@@ -110,7 +110,7 @@ bool MenuScene::Pulse()
 	RECT mouseRect{ mousePoint.x, mousePoint.y, mousePoint.x, mousePoint.y};
 
 	
-	if(ratioNil(300, 250, 240, 85)){
+	if(ratioNil(300, 250, 250, 100)){
 	//if (ratio(1/4,2/5,200,50)) {
 	//if (m_TextEndless->hitBox(mouseRect)) {
 		m_TextEndless->m_Point.x = WIDTH_NORMALIZE(250);

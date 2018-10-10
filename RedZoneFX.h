@@ -13,4 +13,3 @@ public:
 	virtual void Terminate() override;
 	virtual bool Pulse() override;
 };
-

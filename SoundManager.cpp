@@ -39,7 +39,7 @@ void CSoundManager::Initialize()
 	soundSystem->createSound("resources/sound/03. Hyper Spin.mp3", FMOD_LOOP_NORMAL, 0, &vSound[4]);
 	soundSystem->createSound("resources/sound/bullet1.wav", FMOD_DEFAULT, 0, &vSound[5]);
 	soundSystem->createSound("resources/sound/break1.mp3", FMOD_DEFAULT, 0, &vSound[6]);
-	soundSystem->createSound("resources/sound/break2.mp3", FMOD_DEFAULT, 0, &vSound[7]);
+	soundSystem->createSound("resources/sound/break3.mp3", FMOD_DEFAULT, 0, &vSound[7]);
 	soundSystem->createSound("resources/sound/laser .wav", FMOD_DEFAULT, 0, &vSound[8]);
 }
 void CSoundManager::Pulse()

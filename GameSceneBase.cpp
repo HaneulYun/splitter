@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "GameSceneBase.h"
 
+#define WIDTH_NORMALIZE(x) (-m_worldRect.right/2+m_worldRect.right*(x/1280.f))
+#define HEIGHT_NORMALIZE(y) (-m_worldRect.bottom/2+m_worldRect.bottom*(y/720.f))
+
 CGameSceneBase::CGameSceneBase()
 {
 	m_Player = NULL;
@@ -48,7 +51,7 @@ bool CGameSceneBase::Initialize()
 
 	m_TextSCORE = new CText();
 	m_TextSCORE->FontInitialize(20, "Delta Universe-Regular", 90, 0);
-	m_TextSCORE->ObjectInitialize(g_pWindow->m_clientSize.cx / 2, 10, RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
+	m_TextSCORE->ObjectInitialize(WIDTH_NORMALIZE(g_pWindow->m_clientSize.cx/ 2), HEIGHT_NORMALIZE(80), RGB(0xff, 0xff, 0xff), RGB(0x00, 0x00, 0x00), 1);
 
 	m_TextFPS = new CText();
 	m_TextFPS->FontInitialize(20, "±¼¸²", 20, 0);
@@ -67,25 +70,25 @@ bool CGameSceneBase::Initialize()
 	m_TextWAV->ObjectInitialize(10, 90, RGB(0x33, 0x33, 0x33), RGB(0x00, 0x00, 0x00), 1);
 
 	m_bullet1 = new CImageObject();
-	m_bullet1->Initialize("resources/image/bullet1.jpg", -1850, 900, 1.0f);
+	m_bullet1->Initialize("resources/image/bullet1.png", -1850, 900, 1.0f);
 	m_bullet2 = new CImageObject();
-	m_bullet2->Initialize("resources/image/bullet2.jpg", -1850, 580, 1.0f);
+	m_bullet2->Initialize("resources/image/bullet2.png", -1850, 580, 1.0f);
 	m_bullet3 = new CImageObject();
-	m_bullet3->Initialize("resources/image/bullet3.jpg", -1850, 260, 1.0f);
+	m_bullet3->Initialize("resources/image/bullet3.png", -1850, 260, 1.0f);
 	m_bullet4 = new CImageObject();
-	m_bullet4->Initialize("resources/image/bullet4.jpg", -1850, -60, 1.0f);
+	m_bullet4->Initialize("resources/image/bullet4.png", -1850, -60, 1.0f);
 	m_bullet5 = new CImageObject();
-	m_bullet5->Initialize("resources/image/bullet5.jpg", -1850, -380, 1.0f);
+	m_bullet5->Initialize("resources/image/bullet5.png", -1850, -380, 1.0f);
 	m_bullet6 = new CImageObject();
-	m_bullet6->Initialize("resources/image/bullet6.jpg", -1850, -700, 1.0f);
+	m_bullet6->Initialize("resources/image/bullet6.png", -1850, -700, 1.0f);
 	m_bullet7 = new CImageObject();
-	m_bullet7->Initialize("resources/image/bullet7.jpg", -1850, -1020, 1.0f);
+	m_bullet7->Initialize("resources/image/bullet7.png", -1850, -1020, 1.0f);
 	m_skill1 = new CImageObject();
-	m_skill1->Initialize("resources/image/skill1.jpg", -1500, 900, 1.0f);
+	m_skill1->Initialize("resources/image/skill1.png", -1500, 900, 1.0f);
 	m_skill2 = new CImageObject();
-	m_skill2->Initialize("resources/image/skill2.jpg", -1500, 580, 1.0f);
+	m_skill2->Initialize("resources/image/skill2.png", -1500, 580, 1.0f);
 	m_skill3 = new CImageObject();
-	m_skill3->Initialize("resources/image/skill3.jpg", -1500, 260, 1.0f);
+	m_skill3->Initialize("resources/image/skill3.png", -1500, 260, 1.0f);
 
 	m_Score = 0;
 
@@ -176,17 +179,6 @@ bool CGameSceneBase::Pulse()
 
 void CGameSceneBase::ApiRender(Matrix mat)
 {
-	m_bullet1->Render(mat);
-	m_bullet2->Render(mat);
-	m_bullet3->Render(mat);
-	m_bullet4->Render(mat);
-	m_bullet5->Render(mat);
-	m_bullet6->Render(mat);
-	m_bullet7->Render(mat);
-
-	m_skill1->Render(mat);
-	m_skill2->Render(mat);
-	m_skill3->Render(mat);
 
 	m_EffectManager->Render(mat);
 	m_EnemyManager->Render(mat);
@@ -199,12 +191,26 @@ void CGameSceneBase::ApiRender(Matrix mat)
 			m_Player->m_supporter[i].Render(mat);
 	m_Player->Render(mat);
 
+	m_bullet1->Render(mat);
+	m_bullet2->Render(mat);
+	m_bullet3->Render(mat);
+	m_bullet4->Render(mat);
+	m_bullet5->Render(mat);
+	m_bullet6->Render(mat);
+	m_bullet7->Render(mat);
+
+	m_skill1->Render(mat);
+	m_skill2->Render(mat);
+	m_skill3->Render(mat);
+
 	m_TextSCORE->Render(mat);
 	m_TextFPS->Render(mat);
 	m_TextCNT->Render(mat);
 	m_TextVFX->Render(mat);
 	m_TextENY->Render(mat);
 	m_TextWAV->Render(mat);
+
+
 }
 
 void CGameSceneBase::SetShake(int shakeTime, float shakeOffset, float radian)
