@@ -9,7 +9,7 @@ public:
 	CTimer m_timerAfterEffect;
 
 public:
-	CEnemyComingFastSpear();
+	CEnemyComingFastSpear(Vector pt);
 	~CEnemyComingFastSpear();
 
 	virtual bool Initialize() override;

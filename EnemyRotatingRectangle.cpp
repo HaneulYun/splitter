@@ -52,7 +52,7 @@ void CEnemyRotatingRectangle::Terminate()
 	g_pGameScene->SetShake(150, 15, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 400, 6, m_Color));
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, m_NumPolygon, 400, m_Color));
-	g_pGameScene->m_EffectManager->m_VFX.push_back(new CEffectLineFX(m_Point, 300, m_Color));
+	g_pGameScene->m_EffectManager->m_VFX.push_back(new CEffectLineFX(m_Point, 200, m_Color));
 }
 bool CEnemyRotatingRectangle::Pulse()
 {

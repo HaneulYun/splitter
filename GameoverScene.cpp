@@ -118,11 +118,11 @@ bool GameoverScene::Pulse()
 		if (g_pInputManager->m_MouseState.btn[0])
 			g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	}
-	else if (ratio(36 / 68, 30 / 40, 130, 100)) {
-		m_Retry->m_Color = RGB(0xff, 0xff, 0xff);
-		if (g_pInputManager->m_MouseState.btn[0])
-			g_pSystem->ChangeProcess(eProcessType_GameScene);
-	}
+	//else if (ratio(36 / 68, 30 / 40, 130, 100)) {
+	//	m_Retry->m_Color = RGB(0xff, 0xff, 0xff);
+	//	if (g_pInputManager->m_MouseState.btn[0])
+	//		g_pSystem->ChangeProcess(eProcessType_Stage01Scene);
+	//}
 	else if ((g_pKeyCodeScan('m') || g_pKeyCodeScan('M')))
 		g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	else {
