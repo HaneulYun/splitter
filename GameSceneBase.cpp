@@ -157,8 +157,8 @@ bool CGameSceneBase::Pulse()
 	sprintf(str, "WAV : %4d", cnt);
 	m_TextWAV->Pulse(str);
 
-	if ((g_pKeyCodeScan('m') || g_pKeyCodeScan('M')))
-		g_pSystem->ChangeProcess(eProcessType_MenuScene);
+	//if ((g_pKeyCodeScan('m') || g_pKeyCodeScan('M')))
+	//	g_pSystem->ChangeProcess(eProcessType_MenuScene);
 	if (m_isGameOver)
 	{
 		if (m_Score > m_BestScore)

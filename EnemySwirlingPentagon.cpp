@@ -45,7 +45,7 @@ bool CEnemySwirlingPentagon::Initialize()
 }
 void CEnemySwirlingPentagon::Terminate()
 {
-	g_pSoundManager->Pulse(m_pChannel, 6);
+	g_pSoundManager->Pulse(m_pChannel, 7);
 	g_pGameScene->SetShake(150, 15, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 600, 9, m_Color));
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, m_NumPolygon, 600, m_Color));
