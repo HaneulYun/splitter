@@ -24,12 +24,19 @@ void CEffectManager::Terminate()
 }
 bool CEffectManager::Pulse()
 {
-	for (int i = m_VFX.size() - 1; i >= 0; --i)
-		if (m_VFX[i]->Pulse())
+	for (auto iter = std::begin(m_VFX); iter != std::end(m_VFX);)
+	{
+		auto& vfx = *iter;
+		if (!vfx->Pulse())
 		{
-			delete m_VFX[i];
-			m_VFX.erase(m_VFX.begin() + i);
+			++iter;
+			continue;
 		}
+
+		delete vfx;
+		iter = m_VFX.erase(iter);
+	}
+
 	return true;
 }
 void CEffectManager::Render(Matrix mat)

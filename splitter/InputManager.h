@@ -32,7 +32,7 @@ public:
 
 	static CInputManager* Instance()
 	{
-		if(instance == nullptr)
+		if (instance == nullptr)
 			instance = new CInputManager;
 		return instance;
 	}

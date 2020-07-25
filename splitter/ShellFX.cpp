@@ -31,6 +31,7 @@ CShellFX::CShellFX(Vector pt, COLORREF color, float speed, float direction)
 
 CShellFX::~CShellFX()
 {
+	if (m_TargetPolygon) delete[] m_TargetPolygon;
 }
 
 bool CShellFX::Initialize()
@@ -51,10 +52,10 @@ bool CShellFX::Pulse()
 		m_rotate += g_pSystem->GetTimeStep() * m_rotateSpeed;
 		m_moveSpeed -= g_pSystem->GetTimeStep() * m_moveSpeed * 7;
 
-		m_Polygon[0].y = m_TargetPolygon[0].y + 23 * sin(ratio*PI / 2);
-		m_Polygon[1].y = m_TargetPolygon[1].y - 23 * sin(ratio*PI / 2);
-		m_Polygon[2].y = m_TargetPolygon[2].y - 23 * sin(ratio*PI / 2);
-		m_Polygon[3].y = m_TargetPolygon[3].y + 23 * sin(ratio*PI / 2);
+		m_Polygon[0].y = m_TargetPolygon[0].y + 23 * sin(ratio * PI / 2);
+		m_Polygon[1].y = m_TargetPolygon[1].y - 23 * sin(ratio * PI / 2);
+		m_Polygon[2].y = m_TargetPolygon[2].y - 23 * sin(ratio * PI / 2);
+		m_Polygon[3].y = m_TargetPolygon[3].y + 23 * sin(ratio * PI / 2);
 		if (m_Timer.IsElapseTimer())
 		{
 			return true;

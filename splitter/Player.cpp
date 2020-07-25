@@ -31,8 +31,8 @@ bool CPlayer::Initialize()
 	{
 		m_Polygon[0] = { -50, -50 };
 		m_Polygon[1] = { -50,  50 };
-		m_Polygon[2] = {  50,  50 };
-		m_Polygon[3] = {  50, -50 };
+		m_Polygon[2] = { 50,  50 };
+		m_Polygon[3] = { 50, -50 };
 	}
 
 	m_WhirlWind = false;
@@ -51,7 +51,7 @@ void CPlayer::Terminate()
 }
 bool CPlayer::Pulse()
 {
-	if(m_gunLevel == 6)
+	if (m_gunLevel == 6)
 		for (int i = 0; i < 2; ++i)
 		{
 			m_supporter[i].m_Point = { m_normalSupporterDist * cosf(PI * (m_normalSupporterPos + i)), m_normalSupporterDist * sinf(PI * (m_normalSupporterPos + i)) };
@@ -164,11 +164,15 @@ bool CPlayer::Pulse()
 			break;
 		}
 	}
-	for(auto& v : g_pGameScene->m_EnemyManager->m_Enemy)
-		if(v != nullptr && !v->m_type)
-			if (v->hitBox(m_hitRect))
-				if (v->hitPolyton(this, g_pGameScene->m_matWorld))
-					g_pGameScene->m_isGameOver = true;
+	for (auto& v : g_pGameScene->m_EnemyManager->m_Enemy)
+	{
+		if (v == nullptr || v->m_type != 0) continue;
+		if (!v->hitBox(m_hitRect)) continue;
+		if (!v->hitPolyton(this, g_pGameScene->m_matWorld)) continue;
+
+		g_pGameScene->m_isGameOver = true;
+	}
+
 	if ((g_pKeyCodeScan('q') || g_pKeyCodeScan('Q')) && !m_RedZone)
 	{
 		m_RedZone = true;
@@ -177,7 +181,7 @@ bool CPlayer::Pulse()
 		{
 			float r = rand() % 200 / 100.f;
 			float d = 400 + rand() % 600;
-			g_pGameScene->m_EffectManager->m_VFX.push_back(new CRedZoneFX({d * cosf(r * PI), d* sinf(r * PI)}, 6, 250, RGB(255, 0.f, 0.f)));
+			g_pGameScene->m_EffectManager->m_VFX.push_back(new CRedZoneFX({ d * cosf(r * PI), d * sinf(r * PI) }, 6, 250, RGB(255, 0.f, 0.f)));
 		}
 	}
 	else if ((g_pKeyCodeScan('w') || g_pKeyCodeScan('W')) && !m_WhirlWind)
@@ -210,8 +214,8 @@ bool CPlayer::Pulse()
 			}
 			if (m_TimerWhirlWind.IsElapseTimer()) {
 				m_WhirlWind = false;
-				for (int i = 0; i < m_BulletWhirlWind.size(); ++i)
-					delete m_BulletWhirlWind[i];
+
+				for (const auto& p : m_BulletWhirlWind) delete p;
 				m_BulletWhirlWind.clear();
 			}
 		}

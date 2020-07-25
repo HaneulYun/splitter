@@ -29,13 +29,13 @@ bool CEnemyCorpsMiniRectangle::Initialize()
 	switch (rand() % 4)
 	{
 	case 0: m_Point = { float(g_pSystem->m_pCurProcess->GetRect().left), float(rand() % (g_pSystem->m_pCurProcess->GetRect().bottom * 2) - (g_pSystem->m_pCurProcess->GetRect().bottom)) };
-			break;
+		  break;
 	case 1: m_Point = { float(rand() % (g_pSystem->m_pCurProcess->GetRect().right * 2) - (g_pSystem->m_pCurProcess->GetRect().right)), float(g_pSystem->m_pCurProcess->GetRect().top) };
-			break;
+		  break;
 	case 2: m_Point = { float(g_pSystem->m_pCurProcess->GetRect().right), float(rand() % (g_pSystem->m_pCurProcess->GetRect().bottom * 2) - (g_pSystem->m_pCurProcess->GetRect().bottom)) };
-			break;
+		  break;
 	case 3: m_Point = { float(rand() % (g_pSystem->m_pCurProcess->GetRect().right * 2) - (g_pSystem->m_pCurProcess->GetRect().right)), float(g_pSystem->m_pCurProcess->GetRect().bottom) };
-			break;
+		  break;
 	}
 
 	m_rotate = 0.0f;
@@ -64,15 +64,26 @@ bool CEnemyCorpsMiniRectangle::Initialize()
 }
 void CEnemyCorpsMiniRectangle::Terminate()
 {
-	for (int i = 0; i < g_pGameScene->m_EnemyManager->m_Enemy.size(); ++i)
+	auto& con_enemy = g_pGameScene->m_EnemyManager->m_Enemy;
+
+	for (auto iter = std::begin(con_enemy); iter != std::end(con_enemy); ++iter)
+	{
+		auto enemy = *iter;
 		for (int j = 0; j < 3; ++j)
-			if (g_pGameScene->m_EnemyManager->m_Enemy[i] == m_pShield[j])
-			{
-				delete g_pGameScene->m_EnemyManager->m_Enemy[i];
-				g_pGameScene->m_EnemyManager->m_Enemy[i] = nullptr;
-				--i;
-				break;
-			}
+		{
+			if (enemy != m_pShield[j]) continue;
+
+			delete enemy;
+			enemy = nullptr;
+			break;
+		}
+
+		if (enemy == nullptr)
+			iter = con_enemy.erase(iter);
+		else
+			++iter;
+	}
+
 	g_pSoundManager->Pulse(m_pChannel, 6);
 	g_pGameScene->SetShake(150, 15, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 600, 15, m_Color));

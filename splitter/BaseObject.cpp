@@ -23,8 +23,12 @@ bool CBaseObject::hitBox(RECT rt)
 bool CBaseObject::hitPolyton(const CBaseObject* obj, Matrix matWorld)
 {
 	Matrix mat;
-	POINT* A = new POINT[m_NumPolygon];
-	POINT* B = new POINT[obj->m_NumPolygon];
+	std::vector<POINT> A{ };
+	std::vector<POINT> B{ };
+
+	A.resize(m_NumPolygon);
+	B.resize(obj->m_NumPolygon);
+
 	for (int i = 0; i < m_NumPolygon; ++i)
 	{
 		mat.Scale(m_scale);
@@ -64,10 +68,10 @@ bool CBaseObject::hitPolyton(const CBaseObject* obj, Matrix matWorld)
 			return true;
 	}
 
-	for (int k = 0; k <m_NumPolygon; ++k)
+	for (int k = 0; k < m_NumPolygon; ++k)
 	{
 		int crosses = 0;
-		for (int i = 0; i <  obj->m_NumPolygon; i++) {
+		for (int i = 0; i < obj->m_NumPolygon; i++) {
 			int j = (i + 1) % obj->m_NumPolygon;						// 점 B가 선분 (p[i], p[j])의 y좌표 사이에 있음
 			if ((B[i].y > A[k].y) != (B[j].y > A[k].y))
 			{													// atX는 점 B를 지나는 수평선과 선분 (p[i], p[j])의 교점

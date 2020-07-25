@@ -9,7 +9,7 @@
 #define g_pSystem	CWndSystem::Instance()
 
 class CWndSystem : protected CBaseWindow,
-				   public CTimeManager
+	public CTimeManager
 {
 public:
 	int m_Score;

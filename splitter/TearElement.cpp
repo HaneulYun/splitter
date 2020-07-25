@@ -26,7 +26,7 @@ CTearElement::CTearElement(Vector pt, int polyAngle, float distance, COLORREF co
 
 CTearElement::~CTearElement()
 {
-	
+	if (m_TargetPolygon) delete[] m_TargetPolygon;
 }
 
 bool CTearElement::Initialize()
@@ -55,9 +55,9 @@ bool CTearElement::Pulse()
 			m_Polygon[i] = mat.Translate(m_TargetPolygon[i]);
 			mat.Rotate(m_MyRotate);
 			m_Polygon[i] = mat.Translate(m_Polygon[i]);
-			mat.Move(m_CurDistance * cos(m_MyRotate*PI), m_CurDistance * sin(m_MyRotate*PI));
+			mat.Move(m_CurDistance * cos(m_MyRotate * PI), m_CurDistance * sin(m_MyRotate * PI));
 			m_Polygon[i] = mat.Translate(m_Polygon[i]);
-		}	
+		}
 		if (m_Timer.IsElapseTimer())
 		{
 			return true;

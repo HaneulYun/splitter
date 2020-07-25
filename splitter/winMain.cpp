@@ -13,9 +13,9 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPreInst, LPSTR lpCmdLine, int n
 	CWndSystem* pSystem = CWndSystem::Instance();
 
 	pSystem->Initialize();
-	
+
 	pSystem->Run();
-	
+
 	pSystem->Terminate();
 
 	return 0;

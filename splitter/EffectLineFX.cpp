@@ -14,9 +14,9 @@ CEffectLineFX::CEffectLineFX(Vector pt, float distance, COLORREF color)
 	m_TargetPolygon = new POINT[m_NumPolygon];
 	{
 		m_TargetPolygon[0] = m_Polygon[0] = { LONG(-8000), LONG(-distance) };
-		m_TargetPolygon[1] = m_Polygon[1] = { LONG(-8000), LONG( distance) };
-		m_TargetPolygon[2] = m_Polygon[2] = { LONG( 8000), LONG( distance) };
-		m_TargetPolygon[3] = m_Polygon[3] = { LONG( 8000), LONG(-distance) };
+		m_TargetPolygon[1] = m_Polygon[1] = { LONG(-8000), LONG(distance) };
+		m_TargetPolygon[2] = m_Polygon[2] = { LONG(8000), LONG(distance) };
+		m_TargetPolygon[3] = m_Polygon[3] = { LONG(8000), LONG(-distance) };
 	}
 
 	m_scale = 1.0f;
@@ -32,6 +32,7 @@ CEffectLineFX::CEffectLineFX(Vector pt, float distance, COLORREF color)
 
 CEffectLineFX::~CEffectLineFX()
 {
+	if (m_TargetPolygon) delete[] m_TargetPolygon;
 }
 
 bool CEffectLineFX::Initialize()

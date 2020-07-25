@@ -33,7 +33,7 @@ public:
 	int m_gunType;
 	int m_gunLevel;
 
-	std::deque<CBulletStraight*> m_BulletWhirlWind;
+	std::list<CBulletStraight*> m_BulletWhirlWind;
 public:
 	CPlayer();
 	~CPlayer();

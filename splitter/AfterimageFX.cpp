@@ -22,6 +22,7 @@ CAfterimageFX::CAfterimageFX(CBaseObject* obj, COLORREF color, float delay)
 
 CAfterimageFX::~CAfterimageFX()
 {
+	if (m_Polygon) { delete[] m_Polygon; m_Polygon = nullptr; }
 }
 
 bool CAfterimageFX::Initialize()

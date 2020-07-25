@@ -39,7 +39,7 @@ bool CBulletStraight::Initialize()
 }
 void CBulletStraight::Terminate()
 {
-	if(m_activeState)
+	if (m_activeState)
 		g_pGameScene->m_EffectManager->m_VFX.push_back(new CDestroyFX(m_Point, 6, 70, m_Color));
 }
 bool CBulletStraight::Pulse()
@@ -53,7 +53,7 @@ bool CBulletStraight::Pulse()
 	pt = g_pSystem->m_pCurProcess->GetMatrix().Translate(pt);
 
 	if (pt.x + 60 < 0 || pt.y + 60 < 0 ||
-		pt.x - 60 > +g_pWindow->m_clientSize.cx || pt.y - 60 > +g_pWindow->m_clientSize.cy )
+		pt.x - 60 > +g_pWindow->m_clientSize.cx || pt.y - 60 > +g_pWindow->m_clientSize.cy)
 		return true;
 	return false;
 }

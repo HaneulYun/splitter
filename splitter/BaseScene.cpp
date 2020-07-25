@@ -13,12 +13,12 @@ CBaseScene::~CBaseScene()
 
 void CBaseScene::Render()
 {
-	
+
 	g_pGdi->StartDraw();
-	
+
 	ApiRender(m_matWorld);
 	g_pInputManager->Render();
-	
+
 	g_pGdi->Blt();
 	g_pGdi->StopDraw();
 }

@@ -8,10 +8,15 @@ CBaseRender::CBaseRender()
 	m_bIsHit = false;
 	m_pImage = nullptr;
 	m_pStr = nullptr;
+
+	m_Polygon = nullptr;
 }
 
 CBaseRender::~CBaseRender()
 {
+	if (m_Polygon) delete[] m_Polygon;
+	if (m_pImage) delete m_pImage;
+	if (m_pStr) delete[] m_pStr;
 }
 
 void CBaseRender::Render(Matrix matWorld)
@@ -66,8 +71,8 @@ void CBaseRender::Render(Matrix matWorld)
 		case CBaseRender::eRenderType_Font:
 			if (m_pStr == nullptr)
 				break;;
-			if(m_Mode)
-				SetBkMode(g_pGdi->m_hdc, TRANSPARENT); 
+			if (m_Mode)
+				SetBkMode(g_pGdi->m_hdc, TRANSPARENT);
 			SetBkColor(g_pGdi->m_hdc, m_SolidColor);
 			SetTextColor(g_pGdi->m_hdc, m_Color);
 			g_pGdi->setFont(m_tag);
@@ -75,6 +80,6 @@ void CBaseRender::Render(Matrix matWorld)
 			break;
 		}
 	}
-	if(polygon != nullptr)
+	if (polygon != nullptr)
 		delete[] polygon;
 }

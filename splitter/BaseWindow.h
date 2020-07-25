@@ -20,7 +20,7 @@ public:
 	HWND	m_hClientWnd;
 	RECT	m_winRect, m_clientRect;
 	SIZE	m_winSize, m_clientSize;
-	
+
 	RECT	m_winNormalRect;
 	RECT	m_winFullRect;
 
@@ -57,7 +57,7 @@ public:
 
 	static CBaseWindow* Instance()
 	{
-		if(instance == nullptr)
+		if (instance == nullptr)
 			instance = new CBaseWindow();
 		return instance;
 	}

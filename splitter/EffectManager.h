@@ -4,7 +4,7 @@
 class CEffectManager
 {
 public:
-	std::deque<CVFXBase*> m_VFX;
+	std::list<CVFXBase*> m_VFX;
 
 public:
 	CEffectManager();

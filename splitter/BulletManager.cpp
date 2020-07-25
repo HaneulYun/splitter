@@ -24,12 +24,18 @@ void CBulletManager::Terminate()
 }
 bool CBulletManager::Pulse()
 {
-	for (int i = 0; i < m_Bullet.size(); ++i)
-		if (m_Bullet[i]->Pulse())
+	for (auto iter = std::begin(m_Bullet); iter != std::end(m_Bullet);)
+	{
+		auto& bullet = *iter;
+		if (!bullet->Pulse())
 		{
-			delete m_Bullet[i];
-			m_Bullet.erase(m_Bullet.begin() + i);
+			++iter;
+			continue;
 		}
+
+		delete bullet;
+		iter = m_Bullet.erase(iter);
+	}
 	return true;
 }
 void CBulletManager::Render(Matrix mat)

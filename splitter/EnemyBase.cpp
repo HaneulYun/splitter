@@ -8,7 +8,7 @@ CEnemyBase::CEnemyBase()
 
 	float radius = sqrt(pow(g_pGameScene->m_worldRect.right, 2) + pow(g_pGameScene->m_worldRect.bottom, 2));
 	float randValue = rand() % 200 / 100.0;
-	m_Point = { float(radius * cos(randValue*PI)), float(radius * sin(randValue*PI)) };
+	m_Point = { float(radius * cos(randValue * PI)), float(radius * sin(randValue * PI)) };
 
 	m_afterimageTimer.InitTimer(20);
 }

@@ -30,6 +30,7 @@ CDestroyFX::CDestroyFX(Vector pt, int polyAngle, float distance, COLORREF color)
 
 CDestroyFX::~CDestroyFX()
 {
+	if (m_TargetPolygon) delete[] m_TargetPolygon;
 }
 
 bool CDestroyFX::Initialize()

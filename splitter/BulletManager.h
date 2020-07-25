@@ -4,7 +4,7 @@
 class CBulletManager
 {
 public:
-	std::deque<CBulletBase*> m_Bullet;
+	std::list<CBulletBase*> m_Bullet;
 public:
 	CBulletManager();
 	~CBulletManager();

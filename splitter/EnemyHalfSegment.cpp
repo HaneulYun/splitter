@@ -42,15 +42,26 @@ bool CEnemyHalfSegment::Initialize()
 }
 void CEnemyHalfSegment::Terminate()
 {
-	for (int i = 0; i < g_pGameScene->m_EnemyManager->m_Enemy.size(); ++i)
+	auto& con_enemy = g_pGameScene->m_EnemyManager->m_Enemy;
+
+	for (auto iter = std::begin(con_enemy); iter != std::end(con_enemy);)
+	{
+		auto enemy = *iter;
 		for (int j = 0; j < 3; ++j)
-			if (g_pGameScene->m_EnemyManager->m_Enemy[i] == m_pShield[j])
-			{
-				delete g_pGameScene->m_EnemyManager->m_Enemy[i];
-				g_pGameScene->m_EnemyManager->m_Enemy[i] = nullptr;
-				--i;
-				break;
-			}
+		{
+			if (enemy != m_pShield[j]) continue;
+
+			delete enemy;
+			enemy = nullptr;
+			break;
+		}
+
+		if (enemy == nullptr)
+			iter = con_enemy.erase(iter);
+		else
+			++iter;
+	}
+
 	g_pSoundManager->Pulse(m_pChannel, 6);
 	g_pGameScene->SetShake(150, 15, m_rotate);
 	g_pGameScene->m_EffectManager->m_VFX.push_back(new CTearFX(m_Point, 600, 15, m_Color));

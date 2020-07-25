@@ -43,7 +43,7 @@ void CWndSystem::Terminate()
 {
 	CTimeManager::Terminate();
 	if (m_pCurProcess)
-	{		
+	{
 		delete m_pCurProcess;
 		m_pCurProcess = NULL;
 	}
@@ -54,7 +54,7 @@ void CWndSystem::Update()
 {
 	CTimeManager::Pulse();
 	CBaseWindow::Pulse();
-	if(m_pSoundManager)
+	if (m_pSoundManager)
 		m_pSoundManager->Pulse();
 	if (m_pCurProcess) m_pCurProcess->Pulse();
 	if (m_pCurProcess) m_pCurProcess->Render();
@@ -69,7 +69,7 @@ void CWndSystem::ChangeProcess(IProcess::eProcessType eType)
 		delete m_pCurProcess;
 		m_pCurProcess = NULL;
 	}
-	
+
 	switch (eType)
 	{
 	case IProcess::eProcessType_LoadScene:
@@ -99,7 +99,7 @@ void CWndSystem::ChangeProcess(IProcess::eProcessType eType)
 	case IProcess::eProcessType_NILScene:
 		m_pCurProcess = new NILScene();
 		break;
-	
+
 	case IProcess::eProcessType_CrazyScene:
 		m_pCurProcess = new CrazyScene();
 		break;
@@ -109,7 +109,7 @@ void CWndSystem::ChangeProcess(IProcess::eProcessType eType)
 		PostMessage(m_hWnd, WM_CLOSE, 0, 0);
 		break;
 	}
-	
+
 	if (m_pCurProcess)
 	{
 		m_pCurProcess->Initialize();

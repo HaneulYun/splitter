@@ -35,7 +35,7 @@ void CGdi::Blt()
 	BitBlt(m_hdcScreen, 0, 0, g_pWindow->m_clientSize.cx, g_pWindow->m_clientSize.cy, m_hdc, 0, 0, SRCCOPY);
 }
 
-HPEN CGdi::setPen(const int cWidth, const COLORREF & color)
+HPEN CGdi::setPen(const int cWidth, const COLORREF& color)
 {
 	HPEN hPen = nullptr;
 	for (auto& v : vPen)
@@ -66,7 +66,7 @@ void CGdi::outPen()
 	vPen.clear();
 }
 
-HBRUSH CGdi::setBrush(const COLORREF & color)
+HBRUSH CGdi::setBrush(const COLORREF& color)
 {
 	HBRUSH hBrush = nullptr;
 	for (auto& v : vBrush)

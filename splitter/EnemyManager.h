@@ -6,7 +6,7 @@ class CEnemyManager
 {
 	CTimer m_sortTime;
 public:
-	std::deque<CEnemyBase*> m_Enemy;
+	std::list<CEnemyBase*> m_Enemy;
 public:
 	CEnemyManager();
 	~CEnemyManager();

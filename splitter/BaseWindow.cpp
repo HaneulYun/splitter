@@ -51,7 +51,7 @@ bool CBaseWindow::Initialize()
 	USES_CONVERSION;
 	m_hFullScreenWnd = CreateWindowExW(NULL, A2CW(szTitle), A2CW(szTitle), WS_BORDER | WS_CAPTION | WS_SYSMENU,
 		0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), nullptr, nullptr, hInstance, nullptr);
-	
+
 	m_hWnd = m_hFullScreenWnd;
 
 	//m_hWnd = m_hNormalWnd;

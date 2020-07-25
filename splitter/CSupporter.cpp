@@ -49,20 +49,21 @@ bool CSupporter::Pulse()
 	float distance = -1;
 	m_rotate += 0.1;
 
-	if (!g_pGameScene->m_EnemyManager->m_Enemy.size())
-		return true;
-	for (int i = 0; i < g_pGameScene->m_EnemyManager->m_Enemy.size(); ++i)
+	auto& con_enemy = g_pGameScene->m_EnemyManager->m_Enemy;
+	if (con_enemy.empty()) return true;
+
+	for (const auto& enemy : con_enemy)
 	{
-		if (g_pGameScene->m_EnemyManager->m_Enemy[i])
-			if (float dist = m_Point.distance(g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point); (dist < distance || distance < 0))
-			{
-				Vector vec{ cosf(m_rotate*PI), sinf(m_rotate*PI) };
-				Vector vec2{ float(g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point.x - m_Point.x), float(g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point.y - m_Point.y) };
-				distance = dist;
-				target = g_pGameScene->m_EnemyManager->m_Enemy[i]->m_Point;
-				bs = g_pGameScene->m_EnemyManager->m_Enemy[i];
-			}
+		if (float dist = m_Point.distance(enemy->m_Point); (dist < distance || distance < 0))
+		{
+			Vector vec{ cosf(m_rotate * PI), sinf(m_rotate * PI) };
+			Vector vec2{ float(enemy->m_Point.x - m_Point.x), float(enemy->m_Point.y - m_Point.y) };
+			distance = dist;
+			target = enemy->m_Point;
+			bs = enemy;
+		}
 	}
+
 	m_rotate = atan2(bs->m_Point.y - m_Point.y, bs->m_Point.x - m_Point.x) / PI;
 
 	int m_gunType = g_pGameScene->m_Player->m_gunType;

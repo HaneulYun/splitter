@@ -10,7 +10,7 @@ CTimeManager::CTimeManager(void)
 
 	m_nFrameCount = 0;
 	m_dwBeforeTime = 0;
-	
+
 	//timeBeginPeriod(1);
 }
 
