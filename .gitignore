@@ -12,6 +12,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
@@ -32,6 +34,7 @@ bld/
 *.so
 *.dylib
 *.dll
+!fmod64.dll
 
 # Fortran module files
 *.mod
@@ -42,6 +45,7 @@ bld/
 *.la
 *.a
 *.lib
+!fmod64_vc.lib
 
 # Executables
 *.exe
